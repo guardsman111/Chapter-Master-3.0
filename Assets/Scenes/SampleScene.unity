@@ -482,6 +482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Space Marine
       objectReference: {fileID: 0}
+    - target: {fileID: 2321523695958950486, guid: 266dea38c7c33e54f8a90aced7cfb82e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 109e293881c70b047a3ca16d21d28204, type: 2}
     - target: {fileID: 3761879437582522314, guid: 266dea38c7c33e54f8a90aced7cfb82e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
