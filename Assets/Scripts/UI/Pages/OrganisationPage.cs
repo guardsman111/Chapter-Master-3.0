@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class OrganisationPage : MonoBehaviour
 {
+    [SerializeField] private ChapterPageManager manager;
     [SerializeField] private RectTransform companiesParent;
     [SerializeField] private GameObject companyBoxPrefab;
     
@@ -16,17 +17,31 @@ public class OrganisationPage : MonoBehaviour
     [SerializeField] private Dictionary<int, CompanyBox> companyBoxes;
 
     ChapterInfo info;
+    ChapterModel chapterModel;
+
+    public void Load()
+    {
+        Load(chapterModel, info);
+    }
 
     public void Load(ChapterModel model, ChapterInfo info)
     {
-        this.info = info;
+        if(info == null)
+        {
+            this.info = info;
+        }
+
+        if (chapterModel == null)
+        {
+            chapterModel = model;
+        }
 
         companyBoxes = new Dictionary<int, CompanyBox>();
 
         foreach(CompanyModel company in model.CompanyDataDictionary.Values)
         {
             CompanyBox companyBox = Instantiate(companyBoxPrefab, companiesParent).GetComponent<CompanyBox>();
-            companyBox.LoadCompany(company);
+            companyBox.LoadCompany(company, manager);
             companyBoxes.Add(company.CompanyData.CompanyID, companyBox);
         }
 

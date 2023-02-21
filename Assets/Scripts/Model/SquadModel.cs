@@ -6,6 +6,7 @@ public class SquadModel : MonoBehaviour
 {
     private CompanyModel companyModel;
     private SquadInfo squadData;
+    public SquadInfo SquadData { get => squadData; }
 
     public void Load(SquadInfo data, CompanyModel model)
     {
