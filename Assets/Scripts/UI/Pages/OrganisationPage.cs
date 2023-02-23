@@ -46,7 +46,7 @@ public class OrganisationPage : MonoBehaviour
             companyBoxes.Add(company.CompanyData.CompanyID, companyBox);
         }
 
-        companiesParent.sizeDelta = new Vector2(425 * companyBoxes.Count, 0);
+        companiesParent.sizeDelta = new Vector2((425 * companyBoxes.Count) + 25, 0);
     }
 
     public void Clear()

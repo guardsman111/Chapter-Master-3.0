@@ -49,7 +49,7 @@ public class CompanyPage : MonoBehaviour
             squadBoxes.Add(squad.SquadData.SquadID, squadBox);
         }
 
-        squadParent.sizeDelta = new Vector2(425 * squadBoxes.Count, 0);
+        squadParent.sizeDelta = new Vector2((425 * squadBoxes.Count) + 25, 0);
     }
 
     public void Clear()

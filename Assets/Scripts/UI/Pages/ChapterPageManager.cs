@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ChapterMaster.Data.Structs;
 
 public class ChapterPageManager : MonoBehaviour
 {
@@ -8,6 +9,15 @@ public class ChapterPageManager : MonoBehaviour
     [SerializeField] private CompanyPage companyPage;
     [SerializeField] private SquadPage squadPage;
     [SerializeField] private SoldierPage soldierPage;
+
+    public EquipmentModel EquipmentModel;
+
+    private void Start()
+    {
+        this.EquipmentModel = new EquipmentModel();
+        //Change - Nicer path finding pls
+        EquipmentModel.SetupModel(JsonUtility.FromJson<EquipmentData>(Application.streamingAssetsPath + "/Configs/EquipmentData.json"));
+    }
 
     public void LoadChapterPage()
     {

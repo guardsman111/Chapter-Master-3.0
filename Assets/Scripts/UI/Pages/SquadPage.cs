@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static ChapterMaster.Data.Enums;
 
 public class SquadPage : MonoBehaviour
@@ -13,7 +15,7 @@ public class SquadPage : MonoBehaviour
     [SerializeField] private GameObject soldierBoxPrefab;
 
     [SerializeField] private TMP_InputField squadName;
-    [SerializeField] private TMP_Dropdown squadType;
+    [SerializeField] private Dropdown squadType;
 
     [SerializeField] private Dictionary<int, SoldierBox> soldierBoxes;
 
@@ -24,7 +26,6 @@ public class SquadPage : MonoBehaviour
         squadName.onValueChanged.AddListener(SetNewName);
 
         string[] typeNames = Enum.GetNames(typeof(SquadType));
-        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
 
         foreach (string type in typeNames)
         {
@@ -33,7 +34,7 @@ public class SquadPage : MonoBehaviour
         }
 
         squadType.ClearOptions();
-        squadType.options = options;
+        squadType.AddOptions(typeNames.ToList());
 
         gameObject.SetActive(false);
     }
@@ -58,7 +59,7 @@ public class SquadPage : MonoBehaviour
             soldierBoxes.Add(soldier.SoldierData.soldierID, soldierBox);
         }
 
-        soldierParent.sizeDelta = new Vector2(425 * soldierBoxes.Count, 0);
+        soldierParent.sizeDelta = new Vector2((425 * soldierBoxes.Count) + 25, 0);
     }
 
     public void Clear()

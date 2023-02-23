@@ -14,5 +14,32 @@ namespace ChapterMaster.Data
             Elite,
             HQ
         }
+
+        public enum SoldierDesignation
+        {
+            Line,
+            Close,
+            Heavy,
+            Elite,
+            HQ
+        }
+
+        public enum WeaponType
+        {
+            Primary,
+            Secondary,
+            Melee,
+            VehiclePrimary,
+            VehicleSecondary,
+            VehicleMelee
+        }
+
+        public enum ArmourType
+        {
+            Carapace,
+            Power,
+            Terminator,
+            Vehicle
+        }
     }
 }

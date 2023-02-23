@@ -21,7 +21,7 @@ namespace ChapterMaster
 
             if (GenerateNames == true)
             {
-                WeaponData weapons = new WeaponData();
+                EquipmentData weapons = new EquipmentData();
                 weapons.weapons = new List<Weapon>();
 
                 Weapon weapon = new Weapon();
