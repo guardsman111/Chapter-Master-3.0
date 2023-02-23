@@ -2,19 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SquadBox : MonoBehaviour
 {
+    private ChapterPageManager manager;
+
     [SerializeField] private TMP_InputField squadName;
     [SerializeField] private TextMeshProUGUI squadType;
     [SerializeField] private TextMeshProUGUI squadSoldierInfo;
 
     private SquadModel SquadModel;
 
-    public void LoadSquad(SquadModel squad, ChapterPageManager pageManager)
+    public void LoadSquad(SquadModel squad, ChapterPageManager manager)
     {
+        this.manager = manager;
+
         SquadModel = squad;
         squadName.text = squad.SquadData.SquadName;
         squadType.text = squad.SquadData.SquadType.ToString() + " squad";
@@ -30,15 +35,18 @@ public class SquadBox : MonoBehaviour
 
     private void CalculateSoldierComposition()
     {
-        Dictionary<string, int> composition = new Dictionary<string, int>();
-
         string compositionString = "";
 
-        foreach (KeyValuePair<string, int> type in composition)
+        foreach(SoldierModel soldier in SquadModel.SoldierDataDictionary.Values)
         {
-            compositionString += $"{type.Value} x {type.Key} Squads" + "\n";
+            compositionString += soldier.SoldierData.firstName.ToString() + " " + soldier.SoldierData.secondName.ToString() + "\n";
         }
 
         squadSoldierInfo.text = compositionString;
+    }
+
+    public void SetSquadPage()
+    {
+        manager.LoadSquadPage(SquadModel);
     }
 }

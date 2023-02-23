@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class SoldierInfo
 {
+    public int soldierID;
     public string firstName;
     public string secondName;
 

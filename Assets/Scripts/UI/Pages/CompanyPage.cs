@@ -20,7 +20,10 @@ public class CompanyPage : MonoBehaviour
     {
         companyName.onValueChanged.AddListener(SetNewName);
         companyNickname.onValueChanged.AddListener(SetNewNickname);
+
+        gameObject.SetActive(false);
     }
+
     private void SetNewName(string newName)
     {
         companyModel.CompanyData.CompanyName = newName;
@@ -47,5 +50,20 @@ public class CompanyPage : MonoBehaviour
         }
 
         squadParent.sizeDelta = new Vector2(425 * squadBoxes.Count, 0);
+    }
+
+    public void Clear()
+    {
+        foreach(SquadBox box in squadBoxes.Values)
+        {
+            Destroy(box.gameObject);
+        }
+
+        squadBoxes.Clear();
+    }
+
+    public void Back()
+    {
+        manager.LoadChapterPage();
     }
 }

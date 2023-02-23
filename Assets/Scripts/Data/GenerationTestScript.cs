@@ -17,20 +17,34 @@ namespace ChapterMaster
         void Start()
         {
             string path = Application.streamingAssetsPath + "/Configs/SoldierNames.json";
+            string newPath = Application.streamingAssetsPath + "/Configs/WeaponData.json";
 
             if (GenerateNames == true)
             {
-                NameLocalisationStructure nameFile = new NameLocalisationStructure();
-                nameFile.firstNames = new List<string>
-            {
-                "Arvald"
-            };
-                nameFile.secondNames = new List<string>
-            {
-                "Arguath"
-            };
-                string json = JsonUtility.ToJson(nameFile);
-                File.WriteAllText(path, json);
+                WeaponData weapons = new WeaponData();
+                weapons.weapons = new List<Weapon>();
+
+                Weapon weapon = new Weapon();
+                weapon.weaponName = "Bolter";
+                weapon.accuracy = 75f;
+                weapon.fireRate = 0.5f;
+                weapon.damage = 10f;
+                weapon.model = "BolterStandard";
+                weapon.sound = "SingleShotBolter";
+
+                weapons.weapons.Add(weapon);
+
+                weapon.weaponName = "Bolt Pistol";
+                weapon.accuracy = 55f;
+                weapon.fireRate = 1f;
+                weapon.damage = 8f;
+                weapon.model = "BoltPistolStandard";
+                weapon.sound = "SingleShotBolter";
+
+                weapons.weapons.Add(weapon);
+
+                string json = JsonUtility.ToJson(weapons);
+                File.WriteAllText(newPath, json);
             }
 
             if (File.Exists(path))
@@ -98,6 +112,11 @@ namespace ChapterMaster
 
                 int fName = Random.Range(0, names.firstNames.Count);
                 int sName = Random.Range(0, names.secondNames.Count);
+                Soldier.soldierID = i;
+                Soldier.primaryWeapon = "Bolter";
+                Soldier.secondaryWeapon = "Bolt Pistol";
+                Soldier.meleeWeapon = "Knife";
+                Soldier.armour = "MK 7";
 
                 Soldier.firstName = names.firstNames[fName];
                 Soldier.secondName = names.secondNames[sName];

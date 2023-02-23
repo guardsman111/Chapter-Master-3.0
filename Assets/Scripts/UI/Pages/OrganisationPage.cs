@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,11 +25,11 @@ public class OrganisationPage : MonoBehaviour
         Load(chapterModel, info);
     }
 
-    public void Load(ChapterModel model, ChapterInfo info)
+    public void Load(ChapterModel model, ChapterInfo chapterInfo)
     {
         if(info == null)
         {
-            this.info = info;
+            info = chapterInfo;
         }
 
         if (chapterModel == null)
@@ -48,11 +49,22 @@ public class OrganisationPage : MonoBehaviour
         companiesParent.sizeDelta = new Vector2(425 * companyBoxes.Count, 0);
     }
 
-    public void PrintData()
+    public void Clear()
     {
-        foreach(CompanyInfo company in info.companies)
+        foreach (CompanyBox box in companyBoxes.Values)
         {
-            Debug.LogWarning($"Company called {company.CompanyName} nicknamed {company.CompanyNickname}");
+            Destroy(box.gameObject);
         }
+
+        companyBoxes.Clear();
+    }
+
+    public void SaveData()
+    {
+        string path = Application.streamingAssetsPath + "/save.json";
+
+        string json = JsonUtility.ToJson(info);
+        File.WriteAllText(path, json);
+
     }
 }
