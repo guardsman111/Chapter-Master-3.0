@@ -16,7 +16,7 @@ public class CompanyPage : MonoBehaviour
 
     private CompanyModel companyModel;
 
-    private void Start()
+    public void Init()
     {
         companyName.onValueChanged.AddListener(SetNewName);
         companyNickname.onValueChanged.AddListener(SetNewNickname);
@@ -65,5 +65,13 @@ public class CompanyPage : MonoBehaviour
     public void Back()
     {
         manager.LoadChapterPage();
+    }
+
+    public void ReloadSquad(SquadBox squad)
+    {
+        if (squadBoxes.ContainsValue(squad))
+        {
+            squad.ReloadSquad();
+        }
     }
 }

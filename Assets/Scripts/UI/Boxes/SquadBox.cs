@@ -14,13 +14,13 @@ public class SquadBox : MonoBehaviour
     [SerializeField] private TextMeshProUGUI squadType;
     [SerializeField] private TextMeshProUGUI squadSoldierInfo;
 
-    private SquadModel SquadModel;
+    private SquadModel squadModel;
 
     public void LoadSquad(SquadModel squad, ChapterPageManager manager)
     {
         this.manager = manager;
 
-        SquadModel = squad;
+        squadModel = squad;
         squadName.text = squad.SquadData.SquadName;
         squadType.text = squad.SquadData.SquadType.ToString() + " squad";
         squadName.onValueChanged.AddListener(SetNewName);
@@ -28,18 +28,26 @@ public class SquadBox : MonoBehaviour
         CalculateSoldierComposition();
     }
 
+    public void ReloadSquad()
+    {
+        squadName.text = squadModel.SquadData.SquadName;
+        squadType.text = squadModel.SquadData.SquadType.ToString() + " squad";
+
+        CalculateSoldierComposition();
+    }
+
     private void SetNewName(string newName)
     {
-        SquadModel.SquadData.SquadName = newName;
+        squadModel.SquadData.SquadName = newName;
     }
 
     private void CalculateSoldierComposition()
     {
         string compositionString = "";
 
-        foreach(SoldierModel soldier in SquadModel.SoldierDataDictionary.Values)
+        foreach(SoldierModel soldier in squadModel.SoldierDataDictionary.Values)
         {
-            compositionString += soldier.SoldierData.firstName.ToString() + " " + soldier.SoldierData.secondName.ToString() + "\n";
+            compositionString += soldier.SoldierData.soldierName + "\n";
         }
 
         squadSoldierInfo.text = compositionString;
@@ -47,6 +55,6 @@ public class SquadBox : MonoBehaviour
 
     public void SetSquadPage()
     {
-        manager.LoadSquadPage(SquadModel);
+        manager.LoadSquadPage(squadModel, this);
     }
 }

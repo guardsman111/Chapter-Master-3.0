@@ -2,11 +2,11 @@
 	"weapons": [
 		{
 			"weaponName": "Bolter",
-			"type": Primary,
+			"type": "Primary",
 			"accuracy": 75.0,
-			"range": 50,
+			"range": 50.0,
 			"fireRate": 0.5,
-			"magCapacity": 30,
+			"magCapacity": 30.0,
 			"damage": 10.0,
 			"piercing": 4.0,
 			"model": "BolterStandard",
@@ -14,23 +14,23 @@
 		},
 		{
 			"weaponName": "Bolt Pistol",
-			"type": Secondary,
+			"type": "Secondary",
 			"accuracy": 55.0,
-			"range": 50,
+			"range": 40.0,
 			"fireRate": 1.0,
-			"magCapacity": 10,
+			"magCapacity": 10.0,
 			"damage": 8.0,
 			"piercing": 4.0,
 			"model": "BoltPistolStandard",
 			"sound": "SingleShotBolter"
 		},
 		{
-			"weaponName": "Knife",
-			"type": Melee,
+			"weaponName": "Combat Knife",
+			"type": "Melee",
 			"accuracy": 85.0,
-			"range": 0,
+			"range": 0.0,
 			"fireRate": 1.0,
-			"magCapacity": 0,
+			"magCapacity": 0.0,
 			"damage": 5.0,
 			"piercing": 2.0,
 			"model": "Knife",
@@ -40,9 +40,9 @@
 	"armours": [
 		{
 			"armourName": "MK7",
-			"type": Power,
+			"type": "Power",
 			"protectionLevel": 7.0,
-			"coverage": 90,
+			"coverage": 90.0,
 			"model": "PowerArmourMark7",
 			"footStepSound": "PowerArmourStep"
 		}

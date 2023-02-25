@@ -21,7 +21,7 @@ public class SquadPage : MonoBehaviour
 
     SquadModel squadModel;
 
-    private void Start()
+    public void Init()
     {
         squadName.onValueChanged.AddListener(SetNewName);
 
@@ -30,7 +30,6 @@ public class SquadPage : MonoBehaviour
         foreach (string type in typeNames)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData(type);
-            Debug.Log(type);
         }
 
         squadType.ClearOptions();
@@ -42,6 +41,11 @@ public class SquadPage : MonoBehaviour
     private void SetNewName(string newName)
     {
         squadModel.SquadData.SquadName = newName;
+    }
+
+    public void Load()
+    {
+        Load(squadModel);
     }
 
     public void Load(SquadModel squad)
@@ -75,5 +79,13 @@ public class SquadPage : MonoBehaviour
     public void Back()
     {
         manager.BackToCompanyPage();
+    }
+
+    public void ReloadSoldier(SoldierBox soldier)
+    {
+        if(soldierBoxes.ContainsValue(soldier))
+        {
+            soldier.ReloadSoldier(soldier);
+        }
     }
 }

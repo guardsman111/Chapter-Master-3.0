@@ -17,7 +17,7 @@ namespace ChapterMaster
         void Start()
         {
             string path = Application.streamingAssetsPath + "/Configs/SoldierNames.json";
-            string newPath = Application.streamingAssetsPath + "/Configs/WeaponData.json";
+            string newPath = Application.streamingAssetsPath + "/Configs/EquipmentData.json";
 
             if (GenerateNames == true)
             {
@@ -26,22 +26,55 @@ namespace ChapterMaster
 
                 Weapon weapon = new Weapon();
                 weapon.weaponName = "Bolter";
+                weapon.type = "Primary";
                 weapon.accuracy = 75f;
+                weapon.range = 50f;
                 weapon.fireRate = 0.5f;
+                weapon.magCapacity = 30f;
                 weapon.damage = 10f;
+                weapon.piercing = 4.0f;
                 weapon.model = "BolterStandard";
                 weapon.sound = "SingleShotBolter";
 
                 weapons.weapons.Add(weapon);
 
                 weapon.weaponName = "Bolt Pistol";
+                weapon.type = "Secondary";
                 weapon.accuracy = 55f;
+                weapon.range = 40f;
                 weapon.fireRate = 1f;
+                weapon.magCapacity = 10f;
                 weapon.damage = 8f;
+                weapon.piercing = 4.0f;
                 weapon.model = "BoltPistolStandard";
                 weapon.sound = "SingleShotBolter";
 
                 weapons.weapons.Add(weapon);
+
+                weapon.weaponName = "Combat Knife";
+                weapon.type = "Melee";
+                weapon.accuracy = 85f;
+                weapon.range = 0f;
+                weapon.fireRate = 1f;
+                weapon.magCapacity = 0f;
+                weapon.damage = 5f;
+                weapon.piercing = 2.0f;
+                weapon.model = "Knife";
+                weapon.sound = "KnifeStab";
+
+                weapons.weapons.Add(weapon);
+
+                Armour armour = new Armour();
+                armour.armourName = "MK7";
+                armour.type = "Power";
+                armour.protectionLevel = 7.0f;
+                armour.coverage = 90f;
+                armour.model = "PowerArmourMark7";
+                armour.footStepSound = "PowerArmourStep";
+
+                weapons.armours = new List<Armour>();
+
+                weapons.armours.Add(armour);
 
                 string json = JsonUtility.ToJson(weapons);
                 File.WriteAllText(newPath, json);
@@ -113,13 +146,13 @@ namespace ChapterMaster
                 int fName = Random.Range(0, names.firstNames.Count);
                 int sName = Random.Range(0, names.secondNames.Count);
                 Soldier.soldierID = i;
+                Soldier.designation = ((SoldierDesignation)squad.SquadType).ToString();
                 Soldier.primaryWeapon = "Bolter";
                 Soldier.secondaryWeapon = "Bolt Pistol";
-                Soldier.meleeWeapon = "Knife";
-                Soldier.armour = "MK 7";
+                Soldier.meleeWeapon = "Combat Knife";
+                Soldier.armour = "MK7";
 
-                Soldier.firstName = names.firstNames[fName];
-                Soldier.secondName = names.secondNames[sName];
+                Soldier.soldierName = names.firstNames[fName] + " " + names.secondNames[sName];
 
                 squad.Soldiers.Add(Soldier);
             }

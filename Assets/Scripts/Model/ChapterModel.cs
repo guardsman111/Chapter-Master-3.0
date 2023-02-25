@@ -11,11 +11,9 @@ public class ChapterModel
     {
         ChapterData = data;
         CompanyDataDictionary = new Dictionary<int, CompanyModel>();
-        Debug.Log($"Creating Companies");
 
         foreach (CompanyInfo company in data.companies)
         {
-            Debug.Log($"Creating Company {company.CompanyName}");
             CompanyModel model = new CompanyModel();
             model.Load(company, this);
             CompanyDataDictionary.Add(company.CompanyID, model);

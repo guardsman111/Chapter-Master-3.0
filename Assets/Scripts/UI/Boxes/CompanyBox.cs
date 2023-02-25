@@ -19,8 +19,17 @@ public class CompanyBox : MonoBehaviour
         companyModel = company;
         this.manager = manager;
         companyName.text = company.CompanyData.CompanyName;
+        companyNickname.text = company.CompanyData.CompanyNickname;
         companyName.onValueChanged.AddListener(SetNewName);
         companyNickname.onValueChanged.AddListener(SetNewNickname);
+
+        CalculateSquadComposition();
+    }
+
+    public void ReloadCompany()
+    {
+        companyName.text = companyModel.CompanyData.CompanyName;
+        companyNickname.text = companyModel.CompanyData.CompanyNickname;
 
         CalculateSquadComposition();
     }
@@ -62,6 +71,6 @@ public class CompanyBox : MonoBehaviour
 
     public void SetCompanyPage()
     {
-        manager.LoadCompanyPage(companyModel);
+        manager.LoadCompanyPage(companyModel, this);
     }
 }

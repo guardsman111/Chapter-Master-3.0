@@ -18,7 +18,15 @@ public class SoldierBox : MonoBehaviour
         this.manager = manager;
 
         SoldierModel = soldier;
-        soldierName.text = soldier.SoldierData.firstName + " " + soldier.SoldierData.secondName;
+        soldierName.text = soldier.SoldierData.soldierName;
+
+        CalculateEquipmentComposition();
+    }
+
+    public void ReloadSoldier(SoldierBox soldier)
+    {
+        Debug.Log("Reloading text");
+        soldierName.text = soldier.SoldierModel.SoldierData.soldierName;
 
         CalculateEquipmentComposition();
     }
@@ -27,16 +35,16 @@ public class SoldierBox : MonoBehaviour
     {
         string compositionString = "";
 
-        compositionString += "Primary Weapon: " + SoldierModel.SoldierData.primaryWeapon + "\n";
-        compositionString += "Secondary Weapon: " + SoldierModel.SoldierData.secondaryWeapon + "\n";
-        compositionString += "Melee Weapon: " + SoldierModel.SoldierData.meleeWeapon + "\n";
-        compositionString += "Armour Mark: " + SoldierModel.SoldierData.armour + "\n";
+        compositionString += "Primary: " + SoldierModel.SoldierData.primaryWeapon + "\n";
+        compositionString += "Secondary: " + SoldierModel.SoldierData.secondaryWeapon + "\n";
+        compositionString += "Melee: " + SoldierModel.SoldierData.meleeWeapon + "\n";
+        compositionString += "Armour: " + SoldierModel.SoldierData.armour + "\n";
 
         soldierInfo.text = compositionString;
     }
 
     public void SetSoldierPage()
     {
-        manager.LoadSoldierPage(SoldierModel);
+        manager.LoadSoldierPage(SoldierModel, this);
     }
 }

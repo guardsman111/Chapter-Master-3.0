@@ -7,8 +7,8 @@ using UnityEngine;
 public class SoldierInfo
 {
     public int soldierID;
-    public string firstName;
-    public string secondName;
+    public string designation;
+    public string soldierName;
 
     public string primaryWeapon;
     public string secondaryWeapon;

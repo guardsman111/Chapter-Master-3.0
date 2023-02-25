@@ -14,6 +14,7 @@ namespace ChapterMaster.Data
             public List<string> secondNames;
         }
 
+        [Serializable]
         public struct EquipmentData
         {
             public List<Weapon> weapons;

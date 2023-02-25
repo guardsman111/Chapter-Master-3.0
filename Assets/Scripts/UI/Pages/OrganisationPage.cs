@@ -20,6 +20,11 @@ public class OrganisationPage : MonoBehaviour
     ChapterInfo info;
     ChapterModel chapterModel;
 
+    public void Init()
+    {
+        //Blank
+    }
+
     public void Load()
     {
         Load(chapterModel, info);
@@ -57,6 +62,14 @@ public class OrganisationPage : MonoBehaviour
         }
 
         companyBoxes.Clear();
+    }
+
+    public void ReloadCompany(CompanyBox company)
+    {
+        if (companyBoxes.ContainsValue(company))
+        {
+            company.ReloadCompany();
+        }
     }
 
     public void SaveData()
