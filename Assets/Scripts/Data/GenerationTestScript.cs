@@ -18,6 +18,7 @@ namespace ChapterMaster
         {
             string path = Application.streamingAssetsPath + "/Configs/SoldierNames.json";
             string newPath = Application.streamingAssetsPath + "/Configs/EquipmentData.json";
+            string savePath = Application.streamingAssetsPath + "/Save.json";
 
             if (GenerateNames == true)
             {
@@ -86,7 +87,19 @@ namespace ChapterMaster
                 names = JsonUtility.FromJson<NameLocalisationStructure>(json);
             }
 
+            ChapterModel model = new ChapterModel();
             ChapterInfo info = new ChapterInfo();
+
+            if (File.Exists(savePath))
+            {
+                string data = File.ReadAllText(savePath);
+                info = JsonUtility.FromJson<ChapterInfo>(data);
+                model.Load(info);
+
+                page.Load(model, info);
+                return;
+            }
+
             info.companies = new List<CompanyInfo>();
 
             for (int i = 0; i < 10; i++)
@@ -101,8 +114,6 @@ namespace ChapterMaster
 
                 info.companies.Add(company);
             }
-
-            ChapterModel model = new ChapterModel();
             model.Load(info);
 
             page.Load(model, info);

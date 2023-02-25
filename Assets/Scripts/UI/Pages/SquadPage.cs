@@ -24,6 +24,7 @@ public class SquadPage : MonoBehaviour
     public void Init()
     {
         squadName.onValueChanged.AddListener(SetNewName);
+        squadType.onValueChanged.AddListener(SetNewDesignation);
 
         string[] typeNames = Enum.GetNames(typeof(SquadType));
 
@@ -41,6 +42,11 @@ public class SquadPage : MonoBehaviour
     private void SetNewName(string newName)
     {
         squadModel.SquadData.SquadName = newName;
+    }
+
+    private void SetNewDesignation(int newDesignation)
+    {
+        squadModel.SquadData.SquadType = (SquadType)newDesignation;
     }
 
     public void Load()

@@ -29,6 +29,7 @@ public class SoldierPage : MonoBehaviour
     public void Init()
     {
         soldierName.onValueChanged.AddListener(SetNewName);
+        soldierDesignation.onValueChanged.AddListener(SetNewDesignation);
         soldierDesignation.ClearOptions();
         soldierDesignation.AddOptions(Enum.GetNames(typeof(SoldierDesignation)).ToList());
 
@@ -78,6 +79,10 @@ public class SoldierPage : MonoBehaviour
     private void SetNewName(string newName)
     {
         soldierModel.SoldierData.soldierName = newName;
+    }
+    private void SetNewDesignation(int newDesignation)
+    {
+        soldierModel.SoldierData.designation = ((SoldierDesignation)newDesignation).ToString();
     }
 
     public void Load(SoldierModel soldier)
