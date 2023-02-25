@@ -15,4 +15,7 @@ public class SoldierInfo
     public string meleeWeapon;
 
     public string armour;
+
+    public float speed = 5;
+    public float opticsRange = 50;
 }

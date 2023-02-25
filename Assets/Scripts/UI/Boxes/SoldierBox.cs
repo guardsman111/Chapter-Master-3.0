@@ -25,7 +25,6 @@ public class SoldierBox : MonoBehaviour
 
     public void ReloadSoldier(SoldierBox soldier)
     {
-        Debug.Log("Reloading text");
         soldierName.text = soldier.SoldierModel.SoldierData.soldierName;
 
         CalculateEquipmentComposition();

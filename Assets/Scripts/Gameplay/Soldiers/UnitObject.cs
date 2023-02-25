@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,13 @@ public class UnitObject : MonoBehaviour
     [SerializeField] private Transform meleeParent;
     [SerializeField] private Transform armourParent;
     [SerializeField] private GameObject armourObject;
+    [SerializeField] private UnitCollider collider;
+    public UnitCollider Collider { get => collider; }
 
     Dictionary<WeaponType, GameObject> weapons = new Dictionary<WeaponType, GameObject>();
+
+    private SoldierInfo data;
+    public SoldierInfo Data { get => data; }
 
     public void Clear()
     {
@@ -25,10 +31,17 @@ public class UnitObject : MonoBehaviour
 
         weapons.Clear();
         Destroy(armourObject);
+        data = null;
     }
 
     public void Load(SoldierModel soldier, EquipmentModel model)
     {
+        if(model == null)
+        {
+            Debug.LogError("Equipment Model was null, do a thing");
+            return;
+        }
+
         equipmentModel = model;
 
         if (soldier.SoldierData.armour == null)
@@ -59,6 +72,8 @@ public class UnitObject : MonoBehaviour
             GameObject melee = Instantiate(equipmentModel.weapons[soldier.SoldierData.meleeWeapon].modelObject, meleeParent);
             weapons.Add(WeaponType.Melee, melee);
         }
+
+        data = soldier.SoldierData;
     }
 
     public void ChangeWeapon(WeaponType type, string weapon)
@@ -96,5 +111,10 @@ public class UnitObject : MonoBehaviour
         }
 
         armourObject = Instantiate(equipmentModel.weapons[armour].modelObject, armourParent);
+    }
+
+    public void ToggleMesh(bool value)
+    {
+        armourParent.gameObject.SetActive(value);
     }
 }

@@ -45,6 +45,14 @@
 			"coverage": 90.0,
 			"model": "PowerArmourMark7",
 			"footStepSound": "PowerArmourStep"
+		},
+		{
+			"armourName": "MK7Traitor",
+			"type": "Power",
+			"protectionLevel": 7.0,
+			"coverage": 90.0,
+			"model": "PowerArmourMark7Traitor",
+			"footStepSound": "PowerArmourStep"
 		}
 	]
 }
