@@ -14,8 +14,12 @@ public class UnitObject : MonoBehaviour
     [SerializeField] private Transform meleeParent;
     [SerializeField] private Transform armourParent;
     [SerializeField] private GameObject armourObject;
-    [SerializeField] private UnitCollider collider;
-    public UnitCollider Collider { get => collider; }
+    [SerializeField] private UnitCollider colliderUnit;
+    public UnitCollider Collider { get => colliderUnit; }
+    [SerializeField] private SquadObject parentSquad;
+    public SquadObject ParentSquad { get => parentSquad; }
+
+    [SerializeField] private SquadObject targetSquad;
 
     Dictionary<WeaponType, GameObject> weapons = new Dictionary<WeaponType, GameObject>();
 
@@ -23,6 +27,8 @@ public class UnitObject : MonoBehaviour
     public SoldierInfo Data { get => data; }
 
     [SerializeField] private LayerMask TerrainLayerMask;
+
+    public float turnSpeed = 5;
 
     public void Clear()
     {
@@ -39,9 +45,10 @@ public class UnitObject : MonoBehaviour
     private void Update()
     {
         AngleUnitToFloor();
+        FaceClosestEnemy();
     }
 
-    public void Load(SoldierModel soldier, EquipmentModel model)
+    public void Load(SoldierModel soldier, EquipmentModel model, SquadObject parent)
     {
         if(model == null)
         {
@@ -49,11 +56,12 @@ public class UnitObject : MonoBehaviour
             return;
         }
 
+        parentSquad = parent;
         equipmentModel = model;
 
         if (soldier.SoldierData.armour == null)
         {
-            Debug.Log($"Unable to load armour type {soldier.SoldierData.armour}");
+            Debug.LogError($"Unable to load armour type {soldier.SoldierData.armour}");
             return;
         }
 
@@ -125,6 +133,11 @@ public class UnitObject : MonoBehaviour
         armourParent.gameObject.SetActive(value);
     }
 
+    public void SetTarget(SquadObject newTarget)
+    {
+        targetSquad = newTarget;
+    }
+
     public void AngleUnitToFloor()
     {
         RaycastHit hit;
@@ -135,5 +148,19 @@ public class UnitObject : MonoBehaviour
             transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, 25 * Time.deltaTime);
         }
+    }
+
+    public void FaceClosestEnemy()
+    {
+        if(targetSquad != null)
+        {
+            Vector3 lookVec = targetSquad.transform.position - transform.position;
+            lookVec.y = 0;
+            Quaternion lookRot = Quaternion.LookRotation(lookVec);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, turnSpeed * Time.deltaTime);
+            return;
+        }
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, parentSquad.transform.rotation, turnSpeed * Time.deltaTime);
     }
 }

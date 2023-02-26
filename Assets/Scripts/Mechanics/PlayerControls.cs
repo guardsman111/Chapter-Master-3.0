@@ -34,9 +34,19 @@ public class PlayerControls : MonoBehaviour
                 if(hit.collider.tag == "Collider")
                 {
                     Debug.Log("Hit collider");
-                    if (hit.collider.GetComponent<UnitCollider>().Unit.IsPlayer)
+                    UnitCollider unitCollider = hit.collider.GetComponent<UnitCollider>();
+                    if (unitCollider.Unit.IsPlayer)
                     {
-                        selectedUnits.Add(hit.collider.GetComponent<UnitCollider>().Unit);
+                        selectedUnits.Add(unitCollider.Unit);
+                    }
+                }
+                if (hit.collider.tag == "Unit")
+                {
+                    Debug.Log("Hit unit");
+                    UnitObject unit = hit.collider.GetComponent<UnitObject>();
+                    if (unit.ParentSquad.IsPlayer)
+                    {
+                        selectedUnits.Add(unit.ParentSquad);
                     }
                 }
             }

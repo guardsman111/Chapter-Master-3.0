@@ -86,7 +86,6 @@ public class SquadObject : MonoBehaviour
                 soldierObject = Instantiate((GameObject)Resources.Load("Traitor Marine"), transform);
             }
 
-            soldierObject.transform.position += new Vector3(0, 0, 1 * info.Soldiers.IndexOf(soldier));
             SoldierModel soldierModel = new SoldierModel();
             soldierModel.Load(soldier, null);
             if (!IsPlayer)
@@ -97,7 +96,7 @@ public class SquadObject : MonoBehaviour
             members.Add(soldierUnit);
             memberObjects.Add(soldierObject);
 
-            soldierUnit.Load(soldierModel, manager.equipmentModel);
+            soldierUnit.Load(soldierModel, manager.equipmentModel, this);
 
             if(soldier.speed < Stats.maxSpeed)
             {
@@ -213,10 +212,10 @@ public class SquadObject : MonoBehaviour
                 if (currentClosestEnemy != closestEnemy)
                 {
                     closestEnemy = currentClosestEnemy;
-                    /*foreach (UnitWeapon weapon in weapons)
+                    foreach (UnitObject member in members)
                     {
-                        weapon.ChangeTarget(currentClosestEnemy);
-                    }*/
+                        member.SetTarget(currentClosestEnemy);
+                    }
                 }
             }
         }
@@ -277,13 +276,10 @@ public class SquadObject : MonoBehaviour
     // If there are no more enemies visible we will forget the target we last had - If it's not visible we don't need to worry about it!
     public void ForgetTarget()
     {
-        /*foreach (UnitWeapon weapon in weapons)
+        foreach (UnitObject member in members)
         {
-            if (weapon.TargetUnit == closestEnemy && weapon.TargetUnit != null)
-            {
-                weapon.ChangeTarget(null);
-            }
-        }*/
+            member.SetTarget(null);
+        }
         closestEnemy = null;
     }
 

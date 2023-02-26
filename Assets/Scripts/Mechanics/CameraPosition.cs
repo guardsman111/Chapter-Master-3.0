@@ -92,6 +92,10 @@ public class CameraPosition : MonoBehaviour
         {
             transform.position = hit.point + new Vector3(0, 0.5f, 0);
         }
+        else if (Physics.Raycast(transform.position + new Vector3(0, 5, 0), transform.up, out hit))
+        {
+            transform.position = hit.point + new Vector3(0, 0.5f, 0);
+        }
     } 
 
     public void RotateRig(float newValue, float multiplier = 1)
@@ -123,6 +127,10 @@ public class CameraPosition : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position + new Vector3(0, 5, 0), -transform.up, out hit, 100, mask))
+        {
+            newY = hit.point.y + 0.5f;
+        }
+        else if (Physics.Raycast(transform.position + new Vector3(0, 5, 0), transform.up, out hit, 100, mask))
         {
             newY = hit.point.y + 0.5f;
         }

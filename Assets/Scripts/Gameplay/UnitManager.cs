@@ -157,7 +157,6 @@ public class UnitManager : MonoBehaviour
         if (HostileVisibleUnits.ContainsKey(unit.ID) == false)
         {
             HostileVisibleUnits.Add(unit.ID, unit);
-            Debug.Log("Making Unit Visible");
         }
 
         unit.ToggleMesh(true);
@@ -180,7 +179,6 @@ public class UnitManager : MonoBehaviour
         foreach (SquadObject spotter in unit.EnemiesSpotting)
         {
             spotter.SpottedEnemyNotSpottedAnymore(unit);
-            Debug.Log("Making Unit Not Visible");
         }
 
         HostileVisibleUnits.Remove(unit.ID);
@@ -233,6 +231,7 @@ public class UnitManager : MonoBehaviour
         int closestID = -1;
 
         float shortestDistance = 0;
+        //Change - make this more efficient by weeding out targets that are too far away before raycasting
         foreach (SquadObject enemy in enemyDict.Values)
         {
             RaycastHit[] hits;
@@ -245,7 +244,7 @@ public class UnitManager : MonoBehaviour
                 mask = hostileLayer;
             }
 
-            hits = Physics.RaycastAll(viewer.transform.position, direction, viewer.Stats.opticsRange);
+            hits = Physics.RaycastAll(viewer.transform.position + new Vector3(0,1,0), direction, viewer.Stats.opticsRange);
             float targetDistance = Vector3.Distance(enemy.transform.position, viewer.transform.position);
 
             if (hits.Length > 0)
@@ -260,7 +259,7 @@ public class UnitManager : MonoBehaviour
                     }
                     if (hit.collider.tag == "Collider")
                     {
-                        Debug.DrawLine(viewer.transform.position, hit.point, Color.red, 1.0f);
+                        //Debug.DrawLine(viewer.transform.position, hit.point, Color.red, 1.0f);
                         if (hit.collider.GetComponent<UnitCollider>().Unit == enemy)
                         {
                             float distance = Vector3.Distance(viewer.transform.position, enemy.transform.position);
@@ -274,7 +273,7 @@ public class UnitManager : MonoBehaviour
                     }
                     if (hit.collider.tag == "Unit")
                     {
-                        Debug.DrawLine(viewer.transform.position, hit.point, Color.red, 1.0f);
+                        //Debug.DrawLine(viewer.transform.position, hit.point, Color.red, 1.0f);
                         if (hit.collider.GetComponent<SquadObject>() == enemy)
                         {
                             float distance = Vector3.Distance(viewer.transform.position, enemy.transform.position);
@@ -288,12 +287,11 @@ public class UnitManager : MonoBehaviour
                     }
                     if (hit.collider.tag == "Terrain")
                     {
-                        Debug.DrawLine(viewer.transform.position, hit.point, Color.yellow, 1.0f);
+                        //Debug.DrawLine(viewer.transform.position, hit.point, Color.yellow, 1.0f);
                         break;
                     }
                 }
             }
-
         }
         return closestID;
     }

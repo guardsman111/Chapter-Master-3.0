@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: -8939315801321628660}
   - component: {fileID: 5539490944317467574}
   - component: {fileID: 5933440998357356087}
+  - component: {fileID: 1787441884386525355}
   m_Layer: 0
   m_Name: Traitor Marine
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,10 +57,13 @@ MonoBehaviour:
   meleeParent: {fileID: 0}
   armourParent: {fileID: 615246266141775544}
   armourObject: {fileID: 0}
-  collider: {fileID: 0}
+  colliderUnit: {fileID: 0}
+  parentSquad: {fileID: 0}
+  targetSquad: {fileID: 0}
   TerrainLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  turnSpeed: 5
 --- !u!114 &3330931208145250933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +184,19 @@ MonoBehaviour:
   maxAngularAcceleration: 5
   desiredSeperation: 2
   targets: []
+--- !u!65 &1787441884386525355
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &615246266141775547
 GameObject:
   m_ObjectHideFlags: 0

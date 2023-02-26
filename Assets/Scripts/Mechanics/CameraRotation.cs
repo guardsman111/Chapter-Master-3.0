@@ -146,6 +146,7 @@ public class CameraRotation : MonoBehaviour
             {
                 zoom = 1;
             }
+            CheckMouseTarget();
         }
         else
         {
@@ -159,7 +160,6 @@ public class CameraRotation : MonoBehaviour
                 Vector3 newZoom = new Vector3(0, zoom * zoomSpeed, -(zoom * zoomSpeed));
                 transform.localPosition += newZoom;
             }
-            CheckMouseTarget();
         }
         if (transform.localPosition.y <= maxZoom)
         {
@@ -184,6 +184,12 @@ public class CameraRotation : MonoBehaviour
             if (hit.collider.tag == "Collider") 
             {
                 posComponent.SetTargetUnit(hit.collider.GetComponent<UnitCollider>().Unit);
+                return;
+            }
+            if (hit.collider.tag == "Unit")
+            {
+                posComponent.SetTargetUnit(hit.collider.GetComponent<UnitObject>().ParentSquad);
+                return;
             }
         }
     }
