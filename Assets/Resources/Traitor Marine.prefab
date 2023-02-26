@@ -10,6 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1081833978030953569}
   - component: {fileID: 308675700192956120}
+  - component: {fileID: 3330931208145250933}
+  - component: {fileID: 5133166631636883316}
+  - component: {fileID: -9082736880320256393}
+  - component: {fileID: -8939315801321628660}
+  - component: {fileID: 5539490944317467574}
+  - component: {fileID: 5933440998357356087}
   m_Layer: 0
   m_Name: Traitor Marine
   m_TagString: Untagged
@@ -51,6 +57,129 @@ MonoBehaviour:
   armourParent: {fileID: 615246266141775544}
   armourObject: {fileID: 0}
   collider: {fileID: 0}
+  TerrainLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &3330931208145250933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63eef0caad8821b45bd2be1b8c818afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentScript: {fileID: 5133166631636883316}
+  seekScript: {fileID: -9082736880320256393}
+  fleeScript: {fileID: -8939315801321628660}
+  boidCohesion: {fileID: 5539490944317467574}
+  boidSeperation: {fileID: 5933440998357356087}
+  maxSpeed: 4
+  target: {fileID: 0}
+  state: 0
+--- !u!114 &5133166631636883316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8657bbaaddd05a42b9e4e8d15370415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+  trueMaxSpeed: 0
+  maxAcceleration: 30
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0, z: 0}
+  maxRotation: 45
+  maxAngularAcceleration: 45
+--- !u!114 &-9082736880320256393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffa5402ace8e9f4db44b568ff7631bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 50
+  maxAcceleration: 50
+  maxRotation: 5
+  maxAngularAcceleration: 5
+--- !u!114 &-8939315801321628660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c92b8ef6c36c6040b8b69253b33b14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 50
+  maxAcceleration: 50
+  maxRotation: 5
+  maxAngularAcceleration: 5
+--- !u!114 &5539490944317467574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9abab5662d4504bace58b5eef12df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0.4
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 50
+  maxAcceleration: 50
+  maxRotation: 5
+  maxAngularAcceleration: 5
+  neightbourDist: 1
+  targets: []
+--- !u!114 &5933440998357356087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd61564d1622984fb5a505514740de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 70
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 50
+  maxAcceleration: 50
+  maxRotation: 5
+  maxAngularAcceleration: 5
+  desiredSeperation: 2
+  targets: []
 --- !u!1 &615246266141775547
 GameObject:
   m_ObjectHideFlags: 0

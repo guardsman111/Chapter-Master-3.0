@@ -10,6 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1081833978030953569}
   - component: {fileID: 308675700192956120}
+  - component: {fileID: 1351780039930312055}
+  - component: {fileID: 8910561753988539480}
+  - component: {fileID: 8783090030544827589}
+  - component: {fileID: 4810131723039551564}
+  - component: {fileID: 3419343992013572993}
+  - component: {fileID: 5009932087817273887}
   m_Layer: 0
   m_Name: Space Marine
   m_TagString: Untagged
@@ -51,6 +57,129 @@ MonoBehaviour:
   armourParent: {fileID: 615246266141775544}
   armourObject: {fileID: 0}
   collider: {fileID: 0}
+  TerrainLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1351780039930312055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63eef0caad8821b45bd2be1b8c818afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentScript: {fileID: 8910561753988539480}
+  seekScript: {fileID: 8783090030544827589}
+  fleeScript: {fileID: 4810131723039551564}
+  boidCohesion: {fileID: 3419343992013572993}
+  boidSeperation: {fileID: 5009932087817273887}
+  maxSpeed: 10
+  target: {fileID: 0}
+  state: 0
+--- !u!114 &8910561753988539480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8657bbaaddd05a42b9e4e8d15370415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 5
+  trueMaxSpeed: 0
+  maxAcceleration: 30
+  orientation: 0
+  rotation: 0
+  velocity: {x: 0, y: 0, z: 0}
+  maxRotation: 45
+  maxAngularAcceleration: 45
+--- !u!114 &8783090030544827589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffa5402ace8e9f4db44b568ff7631bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 5
+  maxAcceleration: 5
+  maxRotation: 5
+  maxAngularAcceleration: 5
+--- !u!114 &4810131723039551564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c92b8ef6c36c6040b8b69253b33b14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 50
+  maxAcceleration: 50
+  maxRotation: 5
+  maxAngularAcceleration: 5
+--- !u!114 &3419343992013572993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9abab5662d4504bace58b5eef12df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0.4
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 5
+  maxAcceleration: 5
+  maxRotation: 5
+  maxAngularAcceleration: 5
+  neightbourDist: 1
+  targets: []
+--- !u!114 &5009932087817273887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308675700192956123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd61564d1622984fb5a505514740de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 70
+  target: {fileID: 0}
+  dest: {x: 0, y: 0, z: 0}
+  maxSpeed: 5
+  maxAcceleration: 5
+  maxRotation: 5
+  maxAngularAcceleration: 5
+  desiredSeperation: 3
+  targets: []
 --- !u!1 &615246266141775547
 GameObject:
   m_ObjectHideFlags: 0

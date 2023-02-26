@@ -15,15 +15,15 @@ public class SquadObject : MonoBehaviour
     public bool IsPlayer { get => isPlayer; }
 
     private List<UnitObject> members = new List<UnitObject>();
+    private List<GameObject> memberObjects = new List<GameObject>();
 
     protected SquadObject closestEnemy;
     protected SquadObject target;
     protected List<SquadObject> enemiesSpotting = new List<SquadObject>();
     public List<SquadObject> EnemiesSpotting { get => enemiesSpotting; }
     public Vector3 targetLocation;
-
-    [SerializeField] private LayerMask TerrainLayerMask;
     private bool isDead = false;
+    public bool isMoving { get; private set; } = false;
 
     public SquadStats Stats { get; private set; }
     private SquadInfo data;
@@ -95,6 +95,7 @@ public class SquadObject : MonoBehaviour
             }
             UnitObject soldierUnit = soldierObject.GetComponent<UnitObject>();
             members.Add(soldierUnit);
+            memberObjects.Add(soldierObject);
 
             soldierUnit.Load(soldierModel, manager.equipmentModel);
 
@@ -106,6 +107,27 @@ public class SquadObject : MonoBehaviour
             {
                 Stats.opticsRange = soldier.opticsRange;
             }
+
+            Base_Behaviour behaviour = soldierObject.GetComponent<Base_Behaviour>();
+
+            behaviour.SetTarget(this);
+        }
+
+        foreach(UnitObject member in members)
+        {
+            BoidCohesion cohesion = member.GetComponent<BoidCohesion>();
+            BoidSeperation seperation = member.GetComponent<BoidSeperation>();
+            foreach (GameObject GO in memberObjects)
+            {
+                if(GO == member.gameObject)
+                {
+                    continue;
+                }
+
+                cohesion.targets.Add(GO);
+                seperation.targets = memberObjects;
+            }
+            member.transform.parent = null;
         }
 
         //Change - Once dynamic battle start in, this needs to be == or the unit will throw an error
@@ -116,11 +138,19 @@ public class SquadObject : MonoBehaviour
 
         if (Stats.maxSpeed == 0)
         {
-            Stats.maxSpeed = 1;
+            Stats.maxSpeed = 5;
         }
         pathfinder.maxSpeed = Stats.maxSpeed;
 
         scanCoroutine = StartCoroutine(Scan(1.0f));
+    }
+
+    private void Update()
+    {
+        if(pathfinder.reachedDestination)
+        {
+            isMoving = false;
+        }
     }
 
     public void SetPlayer(bool value)
@@ -135,6 +165,7 @@ public class SquadObject : MonoBehaviour
 
     public void SetTargetLocation(Vector3 point)
     {
+        isMoving = true;
         pathfinder.destination = point;
     }
 

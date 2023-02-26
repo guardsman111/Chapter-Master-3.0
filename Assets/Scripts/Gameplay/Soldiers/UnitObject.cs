@@ -22,6 +22,8 @@ public class UnitObject : MonoBehaviour
     private SoldierInfo data;
     public SoldierInfo Data { get => data; }
 
+    [SerializeField] private LayerMask TerrainLayerMask;
+
     public void Clear()
     {
         foreach(GameObject weapon in weapons.Values)
@@ -32,6 +34,11 @@ public class UnitObject : MonoBehaviour
         weapons.Clear();
         Destroy(armourObject);
         data = null;
+    }
+
+    private void Update()
+    {
+        AngleUnitToFloor();
     }
 
     public void Load(SoldierModel soldier, EquipmentModel model)
@@ -116,5 +123,17 @@ public class UnitObject : MonoBehaviour
     public void ToggleMesh(bool value)
     {
         armourParent.gameObject.SetActive(value);
+    }
+
+    public void AngleUnitToFloor()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), -transform.up, out hit, 100, TerrainLayerMask))
+        {
+            Quaternion newRot = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, 25 * Time.deltaTime);
+        }
     }
 }
