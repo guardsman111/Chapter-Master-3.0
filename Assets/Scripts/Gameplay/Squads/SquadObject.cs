@@ -22,7 +22,6 @@ public class SquadObject : MonoBehaviour
     protected List<SquadObject> enemiesSpotting = new List<SquadObject>();
     public List<SquadObject> EnemiesSpotting { get => enemiesSpotting; }
     public Vector3 targetLocation;
-    private bool isDead = false;
     public bool isMoving { get; private set; } = false;
 
     public SquadStats Stats { get; private set; }
@@ -112,22 +111,7 @@ public class SquadObject : MonoBehaviour
             behaviour.SetTarget(this);
         }
 
-        foreach(UnitObject member in members)
-        {
-            BoidCohesion cohesion = member.GetComponent<BoidCohesion>();
-            BoidSeperation seperation = member.GetComponent<BoidSeperation>();
-            foreach (GameObject GO in memberObjects)
-            {
-                if(GO == member.gameObject)
-                {
-                    continue;
-                }
-
-                cohesion.targets.Add(GO);
-                seperation.targets = memberObjects;
-            }
-            member.transform.parent = null;
-        }
+        SetMemberBoids();
 
         //Change - Once dynamic battle start in, this needs to be == or the unit will throw an error
         if (newManager != null)
@@ -142,6 +126,26 @@ public class SquadObject : MonoBehaviour
         pathfinder.maxSpeed = Stats.maxSpeed;
 
         scanCoroutine = StartCoroutine(Scan(1.0f));
+    }
+
+    public void SetMemberBoids()
+    {
+        foreach (UnitObject member in members)
+        {
+            BoidCohesion cohesion = member.GetComponent<BoidCohesion>();
+            BoidSeperation seperation = member.GetComponent<BoidSeperation>();
+            foreach (GameObject GO in memberObjects)
+            {
+                if (GO == member.gameObject)
+                {
+                    continue;
+                }
+
+                cohesion.targets = memberObjects;
+                seperation.targets = memberObjects;
+            }
+            member.transform.parent = null;
+        }
     }
 
     private void Update()
@@ -300,5 +304,38 @@ public class SquadObject : MonoBehaviour
     public void TargetLost()
     {
         target = null;
+    }
+
+    public void TakeHit(WeaponInfo shootingWeapon)
+    {
+        //Calculate which soldier is hit
+        int rand = Random.Range(0, members.Count);
+
+        if(members.Count < rand)
+        {
+            Debug.Log("Rand was higher than member count - must've died");
+            return;
+        }
+        UnitObject hitTarget = members[rand];
+
+        hitTarget.TakeHit(shootingWeapon);
+    }
+
+    public void RemoveMember(UnitObject member)
+    {
+        members.Remove(member);
+        memberObjects.Remove(member.gameObject);
+
+        if(members.Count < 1)
+        {
+            manager.RemoveUnit(this, isPlayer);
+            foreach (SquadObject enemy in enemiesSpotting)
+            {
+                enemy.SpottingEnemyDestroyed(this);
+            }
+            Destroy(pathfinder);
+        }
+
+        SetMemberBoids();
     }
 }

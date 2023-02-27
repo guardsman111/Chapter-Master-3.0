@@ -74,4 +74,14 @@ public class Base_Behaviour : MonoBehaviour
                 break;
         }
     }
+
+    public void Killed()
+    {
+        Destroy(seekScript);
+        Destroy(fleeScript);
+        Destroy(boidSeperation);
+        Destroy(boidCohesion);
+        Destroy(agentScript);
+        Destroy(this);
+    }
 }

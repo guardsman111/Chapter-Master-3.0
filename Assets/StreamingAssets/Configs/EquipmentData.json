@@ -8,7 +8,7 @@
 			"fireRate": 0.5,
 			"magCapacity": 30.0,
 			"damage": 10.0,
-			"piercing": 4.0,
+			"piercing": 3.0,
 			"model": "BolterStandard",
 			"sound": "SingleShotBolter"
 		},
@@ -20,7 +20,7 @@
 			"fireRate": 1.0,
 			"magCapacity": 10.0,
 			"damage": 8.0,
-			"piercing": 4.0,
+			"piercing": 2.0,
 			"model": "BoltPistolStandard",
 			"sound": "SingleShotBolter"
 		},
@@ -32,7 +32,7 @@
 			"fireRate": 1.0,
 			"magCapacity": 0.0,
 			"damage": 5.0,
-			"piercing": 2.0,
+			"piercing": 1.0,
 			"model": "Knife",
 			"sound": "KnifeStab"
 		}
@@ -41,7 +41,7 @@
 		{
 			"armourName": "MK7",
 			"type": "Power",
-			"protectionLevel": 7.0,
+			"protectionLevel": 8.0,
 			"coverage": 90.0,
 			"model": "PowerArmourMark7",
 			"footStepSound": "PowerArmourStep"
@@ -49,7 +49,7 @@
 		{
 			"armourName": "MK7Traitor",
 			"type": "Power",
-			"protectionLevel": 7.0,
+			"protectionLevel": 8.0,
 			"coverage": 90.0,
 			"model": "PowerArmourMark7Traitor",
 			"footStepSound": "PowerArmourStep"

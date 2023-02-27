@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static ChapterMaster.Data.Enums;
 using static ChapterMaster.Data.Structs;
@@ -8,6 +9,7 @@ using static ChapterMaster.Data.Structs;
 public class UnitObject : MonoBehaviour
 {
     [SerializeField] private EquipmentModel equipmentModel;
+    [SerializeField] private Base_Behaviour behaviour;
 
     [SerializeField] private Transform primaryParent;
     [SerializeField] private Transform secondaryParent;
@@ -21,7 +23,10 @@ public class UnitObject : MonoBehaviour
 
     [SerializeField] private SquadObject targetSquad;
 
-    Dictionary<WeaponType, GameObject> weapons = new Dictionary<WeaponType, GameObject>();
+    private Dictionary<WeaponType, WeaponScript> weapons = new Dictionary<WeaponType, WeaponScript>();
+
+    private float health;
+    private bool isDead = false;
 
     private SoldierInfo data;
     public SoldierInfo Data { get => data; }
@@ -30,11 +35,13 @@ public class UnitObject : MonoBehaviour
 
     public float turnSpeed = 5;
 
+    private Coroutine fireCorout;
+
     public void Clear()
     {
-        foreach(GameObject weapon in weapons.Values)
+        foreach(WeaponScript weapon in weapons.Values)
         {
-            Destroy(weapon);
+            Destroy(weapon.gameObject);
         }
 
         weapons.Clear();
@@ -44,6 +51,10 @@ public class UnitObject : MonoBehaviour
 
     private void Update()
     {
+        if(isDead)
+        {
+            return;
+        }
         AngleUnitToFloor();
         FaceClosestEnemy();
     }
@@ -73,22 +84,26 @@ public class UnitObject : MonoBehaviour
         if (soldier.SoldierData.primaryWeapon != "")
         {
             GameObject primary = Instantiate(equipmentModel.weapons[soldier.SoldierData.primaryWeapon].modelObject, primaryParent);
-            weapons.Add(WeaponType.Primary, primary);
+            WeaponScript newWeapon = primary.GetComponent<WeaponScript>();
+            weapons.Add(WeaponType.Primary, newWeapon);
         }
 
         if (soldier.SoldierData.secondaryWeapon != "")
         {
             GameObject secondary = Instantiate(equipmentModel.weapons[soldier.SoldierData.secondaryWeapon].modelObject, secondaryParent);
-            weapons.Add(WeaponType.Secondary, secondary);
+            WeaponScript newWeapon = secondary.GetComponent<WeaponScript>();
+            weapons.Add(WeaponType.Secondary, newWeapon);
         }
 
         if (soldier.SoldierData.meleeWeapon != "")
         {
             GameObject melee = Instantiate(equipmentModel.weapons[soldier.SoldierData.meleeWeapon].modelObject, meleeParent);
-            weapons.Add(WeaponType.Melee, melee);
+            WeaponScript newWeapon = melee.GetComponent<WeaponScript>();
+            weapons.Add(WeaponType.Melee, newWeapon);
         }
 
         data = soldier.SoldierData;
+        health = 50;
     }
 
     public void ChangeWeapon(WeaponType type, string weapon)
@@ -114,7 +129,8 @@ public class UnitObject : MonoBehaviour
                 break;
         }
 
-        GameObject newWeapon = Instantiate(equipmentModel.weapons[weapon].modelObject, parent);
+        GameObject weaponObj = Instantiate(equipmentModel.weapons[weapon].modelObject, parent);
+        WeaponScript newWeapon = weaponObj.GetComponent<WeaponScript>();
         weapons.Add(type, newWeapon);
     }
 
@@ -136,6 +152,11 @@ public class UnitObject : MonoBehaviour
     public void SetTarget(SquadObject newTarget)
     {
         targetSquad = newTarget;
+        if(fireCorout != null)
+        {
+            StopCoroutine(fireCorout);
+        }
+        fireCorout = StartCoroutine(FireAtEnemy());
     }
 
     public void AngleUnitToFloor()
@@ -162,5 +183,101 @@ public class UnitObject : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Slerp(transform.rotation, parentSquad.transform.rotation, turnSpeed * Time.deltaTime);
+    }
+
+    public IEnumerator FireAtEnemy()
+    {
+        if (targetSquad != null)
+        {
+            float distance = Vector3.Distance(transform.position, targetSquad.transform.position);
+            if (isDead)
+            {
+                yield break;
+            }
+
+            if (distance < equipmentModel.weapons[data.primaryWeapon].data.range)
+            {
+                TakeShot(equipmentModel.weapons[data.primaryWeapon]);
+                yield return new WaitForSeconds(equipmentModel.weapons[data.primaryWeapon].data.fireRate);
+                StopCoroutine(fireCorout);
+                fireCorout = StartCoroutine(FireAtEnemy());
+                yield break;
+            }
+
+            if (distance < equipmentModel.weapons[data.secondaryWeapon].data.range)
+            {
+                TakeShot(equipmentModel.weapons[data.secondaryWeapon]);
+                yield return new WaitForSeconds(equipmentModel.weapons[data.secondaryWeapon].data.fireRate);
+                StopCoroutine(fireCorout);
+                fireCorout = StartCoroutine(FireAtEnemy());
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+            StopCoroutine(fireCorout);
+            fireCorout = StartCoroutine(FireAtEnemy());
+        }
+    }
+
+    public void TakeShot(WeaponInfo shootingWeapon)
+    {
+        if (targetSquad != null)
+        {
+            //Chance to hit squad
+            int rand = UnityEngine.Random.Range(0, 100);
+
+            if (rand < shootingWeapon.data.accuracy)
+            {
+                targetSquad.TakeHit(shootingWeapon);
+                return;
+            }
+        }
+    }
+
+    public void TakeHit(WeaponInfo shootingWeapon)
+    {
+        Debug.Log($"{gameObject.name} was hit");
+        //Chance to hit armour
+        int rand = UnityEngine.Random.Range(0, 100);
+
+        if (rand < equipmentModel.armours[data.armour].data.coverage)
+        {
+            float newArmour = equipmentModel.armours[data.armour].data.protectionLevel - shootingWeapon.data.piercing;
+
+            rand = UnityEngine.Random.Range(0, 12);
+            if (rand > newArmour)
+            {
+                TakeDamage(shootingWeapon.data.damage);
+            }
+            return;
+        }
+        
+        TakeDamage(shootingWeapon.data.damage);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        if (!isDead)
+        {
+            parentSquad.RemoveMember(this);
+            behaviour.Killed();
+            isDead = true;
+            parentSquad = null;
+            if (fireCorout != null)
+            {
+                StopCoroutine(fireCorout);
+            }
+            Destroy(GetComponent<BoxCollider>());
+        }
     }
 }

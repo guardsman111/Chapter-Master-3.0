@@ -42,6 +42,8 @@ public class UnitManager : MonoBehaviour
         private set { hostileVisibleUnits = value; }
     }
 
+    [SerializeField] private List<Transform> objectiveLocations;
+
     public List<SquadObject> playerHardStartUnits = new List<SquadObject>();
     public List<SquadObject> hostileHardStartUnits = new List<SquadObject>();
 
@@ -124,6 +126,7 @@ public class UnitManager : MonoBehaviour
         }
 
         HostileUnits.Add(unit.ID, unit);
+        unit.AddComponent<SimpleAI>().Initialize(unit, objectiveLocations);
 
         unit.ToggleMesh(false);
     }

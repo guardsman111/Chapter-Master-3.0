@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe886e38a6dd304699700f3e33a572f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  behaviour: {fileID: 1351780039930312055}
   primaryParent: {fileID: 0}
   secondaryParent: {fileID: 0}
   meleeParent: {fileID: 0}
