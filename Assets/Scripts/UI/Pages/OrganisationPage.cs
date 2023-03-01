@@ -20,9 +20,9 @@ public class OrganisationPage : MonoBehaviour
     ChapterInfo info;
     ChapterModel chapterModel;
 
-    public void Init()
+    public void Initialise(ChapterModel model, ChapterInfo chapterInfo)
     {
-        //Blank
+        Load(model, chapterInfo);
     }
 
     public void Load()
@@ -70,14 +70,5 @@ public class OrganisationPage : MonoBehaviour
         {
             company.ReloadCompany();
         }
-    }
-
-    public void SaveData()
-    {
-        string path = Application.streamingAssetsPath + "/save.json";
-
-        string json = JsonUtility.ToJson(info);
-        File.WriteAllText(path, json);
-
     }
 }

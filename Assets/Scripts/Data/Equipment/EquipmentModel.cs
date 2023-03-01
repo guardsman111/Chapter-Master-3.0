@@ -8,7 +8,7 @@ public class EquipmentModel
     public Dictionary<string, WeaponInfo> weapons = new Dictionary<string, WeaponInfo>();
     public Dictionary<string, ArmourInfo> armours = new Dictionary<string, ArmourInfo>();
 
-    public void SetupModel(EquipmentData data)
+    public void Load(EquipmentData data)
     {
         foreach(Weapon weapon in data.weapons)
         {

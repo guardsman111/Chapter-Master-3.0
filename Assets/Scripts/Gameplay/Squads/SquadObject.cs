@@ -25,7 +25,7 @@ public class SquadObject : MonoBehaviour
     public bool isMoving { get; private set; } = false;
 
     public SquadStats Stats { get; private set; }
-    private SquadInfo data;
+    public SquadInfo data;
 
     private Coroutine scanCoroutine = null;
 
@@ -72,10 +72,14 @@ public class SquadObject : MonoBehaviour
             liveMembers = info.Soldiers.Count
         };
 
+        int count = 1;
+
         foreach (SoldierInfo soldier in info.Soldiers)
         {
             GameObject soldierObject;
 
+
+            //Change - Needs to just load the model once we have enemies specifically spawning in
             if (IsPlayer)
             {
                 soldierObject = Instantiate((GameObject)Resources.Load("Space Marine"), transform);
@@ -85,12 +89,15 @@ public class SquadObject : MonoBehaviour
                 soldierObject = Instantiate((GameObject)Resources.Load("Traitor Marine"), transform);
             }
 
+            soldierObject.transform.position = CirclePosition(transform.position, 3.0f, count);
             SoldierModel soldierModel = new SoldierModel();
             soldierModel.Load(soldier, null);
+
             if (!IsPlayer)
             {
                 soldierModel.SoldierData.armour = "MK7Traitor";
             }
+
             UnitObject soldierUnit = soldierObject.GetComponent<UnitObject>();
             members.Add(soldierUnit);
             memberObjects.Add(soldierObject);
@@ -109,15 +116,10 @@ public class SquadObject : MonoBehaviour
             Base_Behaviour behaviour = soldierObject.GetComponent<Base_Behaviour>();
 
             behaviour.SetTarget(this);
+            count++;
         }
 
         SetMemberBoids();
-
-        //Change - Once dynamic battle start in, this needs to be == or the unit will throw an error
-        if (newManager != null)
-        {
-            manager.AddUnit(this, IsPlayer);
-        }
 
         if (Stats.maxSpeed == 0)
         {
@@ -159,6 +161,16 @@ public class SquadObject : MonoBehaviour
     public void SetPlayer(bool value)
     {
         isPlayer = value;
+    }
+
+    Vector3 CirclePosition(Vector3 center, float radius, int count)
+    {
+        float ang = (360 / data.Soldiers.Count) * count;
+        Vector3 pos;
+        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+        pos.y = center.y;
+        pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+        return pos;
     }
 
     public void SetTargetEnemy(object unit)

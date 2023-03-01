@@ -26,7 +26,7 @@ public class SoldierPage : MonoBehaviour
 
     SoldierModel soldierModel;
 
-    public void Init()
+    public void Initialise()
     {
         soldierName.onValueChanged.AddListener(SetNewName);
         soldierDesignation.onValueChanged.AddListener(SetNewDesignation);
@@ -89,7 +89,7 @@ public class SoldierPage : MonoBehaviour
     {
         soldierModel = soldier;
         soldierName.text = soldier.SoldierData.soldierName;
-        soldierDisplay.Load(soldier, manager.EquipmentModel, null);
+        soldierDisplay.Load(soldier, manager.EquipmentModel, null, true);
         soldierDesignation.value = (int)Enum.Parse(typeof(SoldierDesignation), soldier.SoldierData.designation);
         primaryWeaponDropdown.value = primaries.IndexOf(soldier.SoldierData.primaryWeapon);
         secondaryWeaponDropdown.value = secondaries.IndexOf(soldier.SoldierData.secondaryWeapon);

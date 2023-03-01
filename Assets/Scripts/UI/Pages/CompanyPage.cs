@@ -16,7 +16,7 @@ public class CompanyPage : MonoBehaviour
 
     private CompanyModel companyModel;
 
-    public void Init()
+    public void Initialise()
     {
         companyName.onValueChanged.AddListener(SetNewName);
         companyNickname.onValueChanged.AddListener(SetNewNickname);

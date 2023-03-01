@@ -21,7 +21,7 @@ public class SquadPage : MonoBehaviour
 
     SquadModel squadModel;
 
-    public void Init()
+    public void Initialise()
     {
         squadName.onValueChanged.AddListener(SetNewName);
         squadType.onValueChanged.AddListener(SetNewDesignation);

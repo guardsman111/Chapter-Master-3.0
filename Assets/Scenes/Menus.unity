@@ -947,7 +947,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.6, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3013,6 +3013,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540720650}
   m_CullTransparentMesh: 1
+--- !u!1 &542844760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 542844761}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &542844761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542844760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 865.47186, y: 252.07483, z: 1749.7495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &546586953
 GameObject:
   m_ObjectHideFlags: 0
@@ -5285,9 +5316,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &830813338
 MonoBehaviour:
@@ -5997,7 +6028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &890762239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6172,7 +6203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &899722689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7166,9 +7197,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1032981308
 MonoBehaviour:
@@ -8765,7 +8796,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.6, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9427,7 +9458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1417460043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12625,7 +12656,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1909301734}
   - component: {fileID: 1909301735}
-  - component: {fileID: 1909301736}
   m_Layer: 5
   m_Name: ChapterOrg
   m_TagString: Untagged
@@ -12677,20 +12707,6 @@ MonoBehaviour:
   libraryBox: {fileID: 0}
   medicBox: {fileID: 0}
   armouryBox: {fileID: 0}
---- !u!114 &1909301736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909301733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e1c29e926e959641ad0ab7c2c09e404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  page: {fileID: 1909301735}
-  GenerateNames: 0
 --- !u!1 &1914323173
 GameObject:
   m_ObjectHideFlags: 0
@@ -14391,16 +14407,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308675699827179457}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfe886e38a6dd304699700f3e33a572f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  behaviour: {fileID: 0}
   primaryParent: {fileID: 0}
   secondaryParent: {fileID: 615246265661470055}
   meleeParent: {fileID: 615246266236343248}
   armourParent: {fileID: 615246265708554146}
   armourObject: {fileID: 0}
+  colliderUnit: {fileID: 0}
+  parentSquad: {fileID: 0}
+  targetSquad: {fileID: 0}
+  TerrainLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  turnSpeed: 5
 --- !u!1 &365955682709849545
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,11 @@ using static ChapterMaster.Data.Structs;
 
 public class UnitManager : MonoBehaviour
 {
-    private CompanyInfo playerInfo;
-    private CompanyInfo hostileInfo;
+    [SerializeField] private DeploymentPage deploymentPage;
 
-    public EquipmentModel equipmentModel = new EquipmentModel();
+    public EquipmentModel equipmentModel;
+
+    public ChapterModel chapterModel;
 
     private Dictionary<int, SquadObject> playerUnits = new Dictionary<int, SquadObject>();
     public Dictionary<int, SquadObject> PlayerUnits
@@ -53,16 +54,15 @@ public class UnitManager : MonoBehaviour
 
     public bool testingHardStart = false;
 
-    //Change - This should eventually be removed
-    private void Start()
+    private void Initialize(EquipmentModel equipModel)
     {
-        StartBattle();
+        equipmentModel = equipModel;
     }
 
     public void StartBattle()
     {
         //Change - This should eventually be removed
-        if(testingHardStart)
+        if (testingHardStart)
         {
             string data;
 
@@ -75,7 +75,7 @@ public class UnitManager : MonoBehaviour
             }
 
             data = File.ReadAllText(equipPath);
-            equipmentModel.SetupModel(JsonUtility.FromJson<EquipmentData>(data));
+            equipmentModel.Load(JsonUtility.FromJson<EquipmentData>(data));
 
             string savePath = Application.streamingAssetsPath + "/Save.json";
             ChapterInfo info = new ChapterInfo();
@@ -89,12 +89,9 @@ public class UnitManager : MonoBehaviour
             data = File.ReadAllText(savePath);
             info = JsonUtility.FromJson<ChapterInfo>(data);
 
-            playerInfo = info.companies[0];
-            hostileInfo = info.companies[1];
-
-            for(int i = 0; i < playerHardStartUnits.Count; i++ )
+            /*for (int i = 0; i < playerHardStartUnits.Count; i++)
             {
-                if(playerInfo.Squads.Count < i)
+                if (playerInfo.Squads.Count < i)
                 {
                     Debug.LogWarning("More player hard start units than squads in data");
                     break;
@@ -112,14 +109,18 @@ public class UnitManager : MonoBehaviour
                 }
 
                 hostileHardStartUnits[i].Initialize(this, hostileInfo.Squads[i]);
-            }
+            }*/
         }
+
+        //Change - This needs to load a new data that contains the selected units and their companies
+        deploymentPage.SetupDeploymentPage(chapterModel.ChapterDataPublic);
     }
 
     public void AddUnit(SquadObject unit, bool isPlayer)
     {
         if (isPlayer)
         {
+            Debug.Log($"Unit added is {unit.data.SquadName} with ID {unit.ID}");
             PlayerUnits.Add(unit.ID, unit);
 
             return;

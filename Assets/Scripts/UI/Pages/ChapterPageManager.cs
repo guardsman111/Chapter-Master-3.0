@@ -17,18 +17,13 @@ public class ChapterPageManager : MonoBehaviour
 
     public EquipmentModel EquipmentModel;
 
-    private void Start()
+    public void Initialise(EquipmentModel equipmentModel, ChapterModel model, ChapterInfo info)
     {
-        this.EquipmentModel = new EquipmentModel();
-        //Change - Nicer path finding pls
-
-        string jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Configs/EquipmentData.json");
-        EquipmentModel.SetupModel(JsonUtility.FromJson<EquipmentData>(jsonToRead));
-
-        orgPage.Init();
-        companyPage.Init();
-        squadPage.Init();
-        soldierPage.Init();
+        EquipmentModel = equipmentModel;
+        orgPage.Initialise(model, info);
+        companyPage.Initialise();
+        squadPage.Initialise();
+        soldierPage.Initialise();
     }
 
     public void LoadChapterPage()

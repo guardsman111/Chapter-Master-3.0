@@ -37,6 +37,8 @@ public class UnitObject : MonoBehaviour
 
     private Coroutine fireCorout;
 
+    private bool isOrgScreen;
+
     public void Clear()
     {
         foreach(WeaponScript weapon in weapons.Values)
@@ -51,6 +53,10 @@ public class UnitObject : MonoBehaviour
 
     private void Update()
     {
+        if(isOrgScreen)
+        {
+            return;
+        }
         if(isDead)
         {
             return;
@@ -59,8 +65,10 @@ public class UnitObject : MonoBehaviour
         FaceClosestEnemy();
     }
 
-    public void Load(SoldierModel soldier, EquipmentModel model, SquadObject parent)
+    public void Load(SoldierModel soldier, EquipmentModel model, SquadObject parent, bool isOrgScreen = false)
     {
+        this.isOrgScreen = isOrgScreen;
+
         if(model == null)
         {
             Debug.LogError("Equipment Model was null, do a thing");
@@ -236,7 +244,6 @@ public class UnitObject : MonoBehaviour
 
     public void TakeHit(WeaponInfo shootingWeapon)
     {
-        Debug.Log($"{gameObject.name} was hit");
         //Chance to hit armour
         int rand = UnityEngine.Random.Range(0, 100);
 
