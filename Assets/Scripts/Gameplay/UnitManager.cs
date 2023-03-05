@@ -59,7 +59,7 @@ public class UnitManager : MonoBehaviour
         equipmentModel = equipModel;
     }
 
-    public void StartBattle()
+    public void SelectUnitsForBattle(SelectionInfo selection)
     {
         //Change - This should eventually be removed
         if (testingHardStart)
@@ -113,7 +113,7 @@ public class UnitManager : MonoBehaviour
         }
 
         //Change - This needs to load a new data that contains the selected units and their companies
-        deploymentPage.SetupDeploymentPage(chapterModel.ChapterDataPublic);
+        deploymentPage.SetupDeploymentPage(selection);
     }
 
     public void AddUnit(SquadObject unit, bool isPlayer)

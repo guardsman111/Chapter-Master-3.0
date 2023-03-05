@@ -43,7 +43,10 @@ public class UnitObject : MonoBehaviour
     {
         foreach(WeaponScript weapon in weapons.Values)
         {
-            Destroy(weapon.gameObject);
+            if(weapon != null)
+            {
+                Destroy(weapon.gameObject);
+            }
         }
 
         weapons.Clear();
@@ -118,7 +121,10 @@ public class UnitObject : MonoBehaviour
     {
         if (weapons.ContainsKey(type))
         {
-            Destroy(weapons[type]);
+            if (weapons[type] != null)
+            {
+                Destroy(weapons[type].gameObject);
+            }
             weapons.Remove(type);
         }
 

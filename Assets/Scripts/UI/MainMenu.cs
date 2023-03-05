@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     private Main main;
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private Button organisationButton;
     [SerializeField] private Button battleButton;
 

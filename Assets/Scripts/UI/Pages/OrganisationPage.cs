@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,5 +71,17 @@ public class OrganisationPage : MonoBehaviour
         {
             company.ReloadCompany();
         }
+    }
+
+    public void BackToMainMenu()
+    {
+        manager.BackToMainMenu();
+    }
+
+    public void SelectUnitsForBattle()
+    {
+        SelectionInfo info = new SelectionInfo();
+        info.companies = chapterModel.ChapterDataPublic.companies.ToList();
+        manager.SelectUnitsForBattle(info);
     }
 }

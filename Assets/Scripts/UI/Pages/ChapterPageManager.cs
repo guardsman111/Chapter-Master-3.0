@@ -6,16 +6,25 @@ using static ChapterMaster.Data.Structs;
 
 public class ChapterPageManager : MonoBehaviour
 {
+    [SerializeField] private Main main;
+
     [SerializeField] private OrganisationPage orgPage;
     [SerializeField] private CompanyPage companyPage;
     [SerializeField] private SquadPage squadPage;
     [SerializeField] private SoldierPage soldierPage;
+    [SerializeField] private SelectPage selectPage;
 
     private CompanyBox currentCompany;
     private SquadBox currentSquad;
     private SoldierBox currentSoldier;
 
     public EquipmentModel EquipmentModel;
+
+    public void Start()
+    {
+        main = FindObjectOfType<Main>();
+        main.RetrieveChapterOrg(this);
+    }
 
     public void Initialise(EquipmentModel equipmentModel, ChapterModel model, ChapterInfo info)
     {
@@ -26,14 +35,23 @@ public class ChapterPageManager : MonoBehaviour
         soldierPage.Initialise();
     }
 
+    public void BackToMainMenu()
+    {
+        main.QuitToMenu();
+    }
+
     public void LoadChapterPage()
     {
-        orgPage.ReloadCompany(currentCompany);
+        if(currentCompany != null)
+        {
+            orgPage.ReloadCompany(currentCompany);
+            companyPage.Clear();
+        }
+
         orgPage.Load();
         orgPage.gameObject.SetActive(true);
-
-        companyPage.Clear();
         companyPage.gameObject.SetActive(false);
+        selectPage.gameObject.SetActive(false);
     }
 
     public void LoadCompanyPage(CompanyModel model, CompanyBox box)
@@ -46,9 +64,13 @@ public class ChapterPageManager : MonoBehaviour
 
     public void BackToCompanyPage()
     {
-        companyPage.ReloadSquad(currentSquad);
+        if (currentSquad != null)
+        {
+            companyPage.ReloadSquad(currentSquad);
+            squadPage.Clear();
+        }
+
         companyPage.gameObject.SetActive(true);
-        squadPage.Clear();
         squadPage.gameObject.SetActive(false);
     }
 
@@ -62,9 +84,13 @@ public class ChapterPageManager : MonoBehaviour
 
     public void BackToSquadPage()
     {
-        squadPage.ReloadSoldier(currentSoldier);
+        if(currentSoldier != null)
+        {
+            squadPage.ReloadSoldier(currentSoldier);
+            soldierPage.Clear();
+        }
+
         squadPage.gameObject.SetActive(true);
-        soldierPage.Clear();
         soldierPage.gameObject.SetActive(false);
     }
 
@@ -74,5 +100,19 @@ public class ChapterPageManager : MonoBehaviour
         soldierPage.Load(model);
         squadPage.gameObject.SetActive(false);
         soldierPage.gameObject.SetActive(true);
+    }
+
+    public void SelectUnitsForBattle(SelectionInfo info)
+    {
+        selectPage.Initialise(info);
+        currentCompany = null;
+        selectPage.gameObject.SetActive(true);
+    }
+
+    public void GoToBattle(SelectionInfo info)
+    {
+        selectPage.Initialise(info);
+        currentCompany = null;
+        selectPage.gameObject.SetActive(true);
     }
 }

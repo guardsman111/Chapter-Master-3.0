@@ -33,7 +33,7 @@ public class DeploymentPage : PageView
     }
 
     //Change - This needs to load a new data that contains the selected units and their companies
-    public void SetupDeploymentPage(ChapterInfo selectedUnits)
+    public void SetupDeploymentPage(SelectionInfo selectedUnits)
     {
         foreach(CompanyInfo company in selectedUnits.companies)
         {

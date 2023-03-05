@@ -74,4 +74,11 @@ public class CompanyPage : MonoBehaviour
             squad.ReloadSquad();
         }
     }
+
+    public void SelectUnitsForBattle()
+    {
+        SelectionInfo info = new SelectionInfo();
+        info.companies.Add(companyModel.CompanyData);
+        manager.SelectUnitsForBattle(info);
+    }
 }

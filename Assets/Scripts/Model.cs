@@ -10,7 +10,7 @@ public class Model
     public ChapterModel ChapterModel;
 
     // Start is called before the first frame update
-    void Start()
+    public void Initialise()
     {
         //Change - Nicer path finding pls
 
