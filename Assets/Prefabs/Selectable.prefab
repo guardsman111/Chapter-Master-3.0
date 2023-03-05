@@ -188,7 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53a723fcb24b9047a434a3dadffa99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconName: {fileID: 8003599963864151932}
+  iconType: {fileID: 8003599965301533497}
   selectButton: {fileID: 8003599965092758259}
+  IsActive: 0
 --- !u!1 &8003599964790758953
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class Model
     public EquipmentModel EquipmentModel;
     public ChapterModel ChapterModel;
 
+    private SelectionInfo selectedInfo;
+
     // Start is called before the first frame update
     public void Initialise()
     {
@@ -32,6 +34,20 @@ public class Model
         this.ChapterModel = new ChapterModel();
         jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Save.json");
         ChapterModel.Load(JsonUtility.FromJson<ChapterInfo>(jsonToRead));
+    }
+    public void SetSelectedInfo(SelectionInfo info)
+    {
+        selectedInfo = info;
+    }
+
+    public SelectionInfo GetSelectedInfo()
+    {
+        if(selectedInfo == null)
+        {
+            Debug.LogError("Nothing selected");
+            return null;
+        }
+        return selectedInfo;
     }
 
     public void SaveData()

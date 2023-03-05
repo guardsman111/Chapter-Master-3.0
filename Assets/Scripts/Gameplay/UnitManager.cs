@@ -12,7 +12,6 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private DeploymentPage deploymentPage;
 
     public EquipmentModel equipmentModel;
-
     public ChapterModel chapterModel;
 
     private Dictionary<int, SquadObject> playerUnits = new Dictionary<int, SquadObject>();
@@ -54,7 +53,7 @@ public class UnitManager : MonoBehaviour
 
     public bool testingHardStart = false;
 
-    private void Initialize(EquipmentModel equipModel)
+    public void Initialize(EquipmentModel equipModel)
     {
         equipmentModel = equipModel;
     }
@@ -62,7 +61,7 @@ public class UnitManager : MonoBehaviour
     public void SelectUnitsForBattle(SelectionInfo selection)
     {
         //Change - This should eventually be removed
-        if (testingHardStart)
+        /*if (testingHardStart)
         {
             string data;
 
@@ -89,7 +88,7 @@ public class UnitManager : MonoBehaviour
             data = File.ReadAllText(savePath);
             info = JsonUtility.FromJson<ChapterInfo>(data);
 
-            /*for (int i = 0; i < playerHardStartUnits.Count; i++)
+            for (int i = 0; i < playerHardStartUnits.Count; i++)
             {
                 if (playerInfo.Squads.Count < i)
                 {
@@ -109,8 +108,8 @@ public class UnitManager : MonoBehaviour
                 }
 
                 hostileHardStartUnits[i].Initialize(this, hostileInfo.Squads[i]);
-            }*/
-        }
+            }
+        }*/
 
         //Change - This needs to load a new data that contains the selected units and their companies
         deploymentPage.SetupDeploymentPage(selection);

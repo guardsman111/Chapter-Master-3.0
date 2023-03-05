@@ -7,6 +7,7 @@ using static ChapterMaster.Data.Structs;
 public class ChapterPageManager : MonoBehaviour
 {
     [SerializeField] private Main main;
+    [SerializeField] private Camera menuCamera;
 
     [SerializeField] private OrganisationPage orgPage;
     [SerializeField] private CompanyPage companyPage;
@@ -33,6 +34,8 @@ public class ChapterPageManager : MonoBehaviour
         companyPage.Initialise();
         squadPage.Initialise();
         soldierPage.Initialise();
+        gameObject.SetActive(true);
+        menuCamera.gameObject.SetActive(true);
     }
 
     public void BackToMainMenu()
@@ -111,8 +114,8 @@ public class ChapterPageManager : MonoBehaviour
 
     public void GoToBattle(SelectionInfo info)
     {
-        selectPage.Initialise(info);
-        currentCompany = null;
-        selectPage.gameObject.SetActive(true);
+        main.OpenBattlefield(info);
+        gameObject.SetActive(false);
+        menuCamera.gameObject.SetActive(false);
     }
 }

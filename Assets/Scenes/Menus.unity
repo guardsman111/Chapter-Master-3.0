@@ -12470,6 +12470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main: {fileID: 0}
+  menuCamera: {fileID: 325955124}
   orgPage: {fileID: 1909301735}
   companyPage: {fileID: 1417460044}
   squadPage: {fileID: 899722690}

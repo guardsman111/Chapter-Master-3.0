@@ -17,9 +17,11 @@ public class DeployableUnitsPage : PageView
 
     public void SetActiveCompany(CompanyIcon newCompany)
     {
+        Clear();
+
         foreach(SquadInfo info in newCompany.Info.Squads)
         {
-            if(deployedSquads.Contains(info))
+            if(deployedSquads.Contains(info) || unitIconList.ContainsKey(info))
             {
                 continue;
             }
@@ -40,5 +42,15 @@ public class DeployableUnitsPage : PageView
         deployedSquads.Add(info);
 
         unitContentRect.sizeDelta = new Vector2(210 * unitIconList.Count, unitContent.GetComponent<RectTransform>().sizeDelta.y);
+    }
+
+    public void Clear()
+    {
+        foreach (UnitIcon icon in unitIconList.Values)
+        {
+            Destroy(icon.gameObject);
+        }
+
+        unitIconList.Clear();
     }
 }

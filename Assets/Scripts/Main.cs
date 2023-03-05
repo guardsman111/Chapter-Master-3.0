@@ -9,6 +9,8 @@ public class Main : MonoBehaviour
     [SerializeField] private Model model = new Model();
     [SerializeField] private MainMenu mainMenu;
 
+
+
     private void Start()
     {
         model.Initialise();
@@ -31,12 +33,25 @@ public class Main : MonoBehaviour
         //SceneManager.LoadScene("Menus", LoadSceneMode.Additive); To be created
     }
 
-    public void OpenBattlefield()
+    public void OpenBattlefield(SelectionInfo info = null)
     {
+        if(info == null)
+        {
+            Debug.LogError("Nothing selected");
+            return;
+        }
+        model.SetSelectedInfo(info);
         mainMenu.gameObject.SetActive(false);
         //Change - needs to dynamic based on the strategy layer or the map chosen for skirmish
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
         mainCamera.gameObject.SetActive(false);
+    }
+
+    public void RetrieveSelectedInfo(UnitManager manager)
+    {
+        manager.Initialize(model.EquipmentModel);
+        manager.SelectUnitsForBattle(model.GetSelectedInfo());
+        model.SetSelectedInfo(null);
     }
 
     public void QuitToMenu()

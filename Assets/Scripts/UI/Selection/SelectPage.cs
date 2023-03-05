@@ -31,6 +31,7 @@ public class SelectPage : MonoBehaviour
         foreach(ExpandableIcon company in selectionIcons.GetIcons().Values)
         {
             CompanyInfo companyInfo = new CompanyInfo();
+            companyInfo.Squads = new List<SquadInfo>();
             if(company.IsCountMax())
             {
                 companyInfo = company.companyInfo;
@@ -54,7 +55,7 @@ public class SelectPage : MonoBehaviour
             selectionInfo.companies.Add(companyInfo);
         }
 
-        manager.GoToBattle(info);
+        manager.GoToBattle(selectionInfo);
     }
 
     public void Back()

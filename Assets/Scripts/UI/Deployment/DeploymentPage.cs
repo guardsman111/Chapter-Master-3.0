@@ -83,10 +83,17 @@ public class DeploymentPage : PageView
             return;
         }
 
+        if(newCompany == activeCompany)
+        {
+            activeCompany = null;
+            unitsPage.Clear();
+            unitsPage.SetPageState(false);
+            return;
+        }
+
         unitsPage.SetPageState(true);
         unitsPage.SetActiveCompany(newCompany);
         activeCompany = newCompany;
-
     }
 
     public void SpawnGhost(SquadInfo ghost)
@@ -194,7 +201,7 @@ public class DeploymentPage : PageView
             }
         }*/
 
-        GameObject newGO = Instantiate(unitPrefab, null);
+        GameObject newGO = Instantiate(unitPrefab, manager.transform);
         SquadObject unit = newGO.GetComponent<SquadObject>();
         newGO.transform.position = ghost.transform.position;
         newGO.transform.rotation = ghost.transform.rotation;
@@ -214,5 +221,6 @@ public class DeploymentPage : PageView
 
         SetDeploymentMenuState(false);
         DeploymentButton.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
     }
 }

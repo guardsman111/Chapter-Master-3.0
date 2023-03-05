@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static ChapterMaster.Data.Enums;
 
 public class ExpandableIcon : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class ExpandableIcon : MonoBehaviour
     public Dictionary<string, SelectionIcon> Icons = new Dictionary<string, SelectionIcon>();
 
     public CompanyInfo companyInfo { get; private set; }
+    public bool isHidable = true;
 
     private bool expanded = false;
 
@@ -27,17 +29,45 @@ public class ExpandableIcon : MonoBehaviour
         container = newContainer;
         companyInfo = info;
 
-        foreach(SquadInfo squad in info.Squads)
+        Dictionary<SquadType, int> squadBreakdown = new Dictionary<SquadType, int>();
+
+        foreach (SquadInfo squad in info.Squads)
         {
             GameObject selectable = Instantiate(container.SelectPage.selectablePrefab, selectableContent);
             SelectionIcon icon = selectable.GetComponent<SelectionIcon>();
             icon.Initialise(this, squad);
             Icons.Add(icon.Info.SquadName, icon);
             icon.IsActive = isActive;
+            if(squadBreakdown.ContainsKey(squad.SquadType))
+            {
+                squadBreakdown[squad.SquadType] += 1;
+                continue;
+            }
+
+            squadBreakdown.Add(squad.SquadType, 1);
         }
+
+        iconName.text = info.CompanyName;
+        iconNickname.text = info.CompanyNickname;
+
+        string breakdown = "";
+
+        foreach(var squad in squadBreakdown)
+        {
+            if(breakdown == "")
+            {
+                breakdown += squad.Value + "x " + squad.Key;
+                continue;
+            }
+
+            breakdown += ", " + squad.Value + "x " + squad.Key;
+        }
+
+        iconBreakdown.text = breakdown;
 
         Expand(false, true);
         gameObject.SetActive(isActive);
+        isHidable = !isActive;
     }
 
     public void ToggleExpand()
@@ -64,7 +94,7 @@ public class ExpandableIcon : MonoBehaviour
         {
             ExpandableRect.sizeDelta = new Vector3(ExpandableRect.sizeDelta.x, 210 + (160 * activeIconsCount));
 
-            if (this.gameObject.activeSelf == true)
+            if (this.gameObject.activeInHierarchy == true)
             {
                 StartCoroutine(UpdateCanvas());
             }
@@ -73,7 +103,7 @@ public class ExpandableIcon : MonoBehaviour
 
         ExpandableRect.sizeDelta = new Vector3(ExpandableRect.sizeDelta.x, 200);
 
-        if (this.gameObject.activeSelf == true)
+        if (this.gameObject.activeInHierarchy == true)
         {
             StartCoroutine(UpdateCanvas());
         }
@@ -232,7 +262,10 @@ public class ExpandableIcon : MonoBehaviour
         }
 
         selectAllToggle.SetIsOnWithoutNotify(true);
-        this.gameObject.SetActive(false);
+        if (isHidable == true)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator UpdateCanvas()
