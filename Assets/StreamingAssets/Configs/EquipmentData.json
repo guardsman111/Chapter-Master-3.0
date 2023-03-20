@@ -1,7 +1,7 @@
 {
 	"weapons": [
 		{
-			"weaponName": "Bolter",
+			"weaponName": "Executioner Rifle",
 			"type": "Primary",
 			"accuracy": 75.0,
 			"range": 50.0,
@@ -9,11 +9,11 @@
 			"magCapacity": 30.0,
 			"damage": 10.0,
 			"piercing": 3.0,
-			"model": "BolterStandard",
-			"sound": "SingleShotBolter"
+			"model": "ExecutionerRifle",
+			"sound": "SingleShotExecutioner"
 		},
 		{
-			"weaponName": "Bolt Pistol",
+			"weaponName": "Executioner Pistol",
 			"type": "Secondary",
 			"accuracy": 55.0,
 			"range": 40.0,
@@ -21,8 +21,8 @@
 			"magCapacity": 10.0,
 			"damage": 8.0,
 			"piercing": 2.0,
-			"model": "BoltPistolStandard",
-			"sound": "SingleShotBolter"
+			"model": "ExecutionerPistol",
+			"sound": "SingleShotExecutioner"
 		},
 		{
 			"weaponName": "Combat Knife",
@@ -39,19 +39,19 @@
 	],
 	"armours": [
 		{
-			"armourName": "MK7",
+			"armourName": "Power Armour Mk1",
 			"type": "Power",
 			"protectionLevel": 8.0,
 			"coverage": 90.0,
-			"model": "PowerArmourMark7",
+			"model": "Mk1PowerArmour",
 			"footStepSound": "PowerArmourStep"
 		},
 		{
-			"armourName": "MK7Traitor",
+			"armourName": "Traitor Power Armour",
 			"type": "Power",
 			"protectionLevel": 8.0,
 			"coverage": 90.0,
-			"model": "PowerArmourMark7Traitor",
+			"model": "Mk7Traitor",
 			"footStepSound": "PowerArmourStep"
 		}
 	]
