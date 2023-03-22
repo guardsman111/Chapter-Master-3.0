@@ -89,7 +89,7 @@ public class SoldierPage : MonoBehaviour
     {
         soldierModel = soldier;
         soldierName.text = soldier.SoldierData.soldierName;
-        soldierDisplay.Load(soldier, manager.EquipmentModel, null, true);
+        soldierDisplay.Load(soldier, manager.EquipmentModel, null, manager.GetArmourPattern(), true);
         soldierDesignation.value = (int)Enum.Parse(typeof(SoldierDesignation), soldier.SoldierData.designation);
         primaryWeaponDropdown.value = primaries.IndexOf(soldier.SoldierData.primaryWeapon);
         secondaryWeaponDropdown.value = secondaries.IndexOf(soldier.SoldierData.secondaryWeapon);

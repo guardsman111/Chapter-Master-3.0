@@ -8,6 +8,10 @@ public class DisplayCameraRotation : MonoBehaviour
     [SerializeField] private float mouseRotationMultiplier;
     [SerializeField] private int maxXRotation;
     [SerializeField] private int minXRotation;
+    [SerializeField] private float zoomSpeed;
+    [SerializeField] private float maxZoom;
+    [SerializeField] private float minZoom;
+    [SerializeField] private Camera cam;
 
     private bool isRotating = false;
 
@@ -26,6 +30,7 @@ public class DisplayCameraRotation : MonoBehaviour
     void Update()
     {
         DoRotationCheck();
+        DoZoomCheck();
     }
 
     private void DoRotationCheck()
@@ -40,6 +45,44 @@ public class DisplayCameraRotation : MonoBehaviour
         }
 
         DoRotation();
+    }
+
+    private void DoZoomCheck()
+    {
+        wheelValue = Input.GetAxis("Mouse ScrollWheel");
+
+        if (wheelValue != 0)
+        {
+            if (wheelValue > 0)
+            {
+                zoom = -1;
+            }
+            if (wheelValue < 0)
+            {
+                zoom = 1;
+            }
+        }
+        else
+        {
+            zoom = 0;
+        }
+
+        if (zoom != 0)
+        {
+            if (cam.transform.localPosition.z > minZoom || cam.transform.localPosition.z < maxZoom)
+            {
+                Vector3 newZoom = new Vector3(0, 0, -(zoom * zoomSpeed));
+                cam.transform.localPosition += newZoom;
+            }
+        }
+        if (cam.transform.localPosition.z <= minZoom)
+        {
+            cam.transform.localPosition = new Vector3(0, cam.transform.localPosition.y, (minZoom));
+        }
+        if (cam.transform.localPosition.z >= maxZoom)
+        {
+            cam.transform.localPosition = new Vector3(0, cam.transform.localPosition.y, (maxZoom));
+        }
     }
 
     private void StartRotation()

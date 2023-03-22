@@ -47,6 +47,23 @@ namespace ChapterMaster.Data
             public string footStepSound;
         }
 
+        [Serializable]
+        public struct ArmourPattern
+        {
+            public string patternName;
+            public List<SkinnedMeshRenderer> primaryMeshes;
+            public List<SkinnedMeshRenderer> secondaryMeshes;
+        }
+
+        [Serializable]
+        public struct MaterialDef
+        {
+            public string materialName;
+            public Color colour;
+            public float metallic;
+            public float smoothness;
+        }
+
         /*
         public struct Weapon
         {

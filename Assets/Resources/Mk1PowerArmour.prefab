@@ -1277,8 +1277,8 @@ Transform:
   - {fileID: 7993947203680255734}
   - {fileID: 2110125441410392530}
   - {fileID: 1559197061322751329}
-  - {fileID: 812244520621013801}
   - {fileID: 302584904988884767}
+  - {fileID: 812244520621013801}
   - {fileID: 4391908862650257852}
   - {fileID: 2965164220591491042}
   - {fileID: 1760052916417310350}
@@ -1791,7 +1791,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9673c998b9fd929489ffc0c519565a01, type: 2}
+  - {fileID: 2100000, guid: 76a4921a8776af145bf5320ce6b386f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2587,7 +2587,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 76a4921a8776af145bf5320ce6b386f2, type: 2}
+  - {fileID: 2100000, guid: b6f73fa6bb0419f4988dbc51c2ef1d27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2673,7 +2673,7 @@ GameObject:
   - component: {fileID: 302584904988884767}
   - component: {fileID: 7791995139735634076}
   m_Layer: 0
-  m_Name: Breastplate R
+  m_Name: Breastplate L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2692,7 +2692,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3182422496034802478}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7791995139735634076
 SkinnedMeshRenderer:
@@ -2966,7 +2966,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9673c998b9fd929489ffc0c519565a01, type: 2}
+  - {fileID: 2100000, guid: 76a4921a8776af145bf5320ce6b386f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3899,7 +3899,7 @@ GameObject:
   - component: {fileID: 812244520621013801}
   - component: {fileID: 1676519241357683039}
   m_Layer: 0
-  m_Name: Breastplate L
+  m_Name: Breastplate R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3918,7 +3918,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3182422496034802478}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1676519241357683039
 SkinnedMeshRenderer:
@@ -4056,6 +4056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8434361129812838060}
   - component: {fileID: 7078792786873352116}
+  - component: {fileID: 4263801752900578406}
   m_Layer: 0
   m_Name: Mk1PowerArmour
   m_TagString: Untagged
@@ -4098,6 +4099,51 @@ MonoBehaviour:
   primaryHome: {fileID: 3182422495969276892}
   secondaryHome: {fileID: 119310560}
   meleeHome: {fileID: 3182422496888884726}
+--- !u!114 &4263801752900578406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099257438597225494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947fa8eba6891d24ca5c988d67c5aedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patterns:
+  - patternName: OneColour
+    primaryMeshes:
+    - {fileID: 6503052036111735927}
+    - {fileID: 3065439540502357311}
+    - {fileID: 7461078082576247426}
+    - {fileID: 5135575419706477800}
+    - {fileID: 1676519241357683039}
+    - {fileID: 7791995139735634076}
+    - {fileID: 4871369892692991355}
+    - {fileID: 418913067283520920}
+    - {fileID: 8792571659093869332}
+    - {fileID: 7369437785189931457}
+    - {fileID: 1221382504493144188}
+    - {fileID: 6015751336539504230}
+    secondaryMeshes: []
+  - patternName: Halved
+    primaryMeshes:
+    - {fileID: 6503052036111735927}
+    - {fileID: 7461078082576247426}
+    - {fileID: 7791995139735634076}
+    - {fileID: 4871369892692991355}
+    - {fileID: 8792571659093869332}
+    - {fileID: 1221382504493144188}
+    secondaryMeshes:
+    - {fileID: 3065439540502357311}
+    - {fileID: 5135575419706477800}
+    - {fileID: 1676519241357683039}
+    - {fileID: 418913067283520920}
+    - {fileID: 7369437785189931457}
+    - {fileID: 6015751336539504230}
+  primary: {fileID: 2100000, guid: 76a4921a8776af145bf5320ce6b386f2, type: 2}
+  secondary: {fileID: 2100000, guid: 9673c998b9fd929489ffc0c519565a01, type: 2}
 --- !u!1 &9159070701890676254
 GameObject:
   m_ObjectHideFlags: 0

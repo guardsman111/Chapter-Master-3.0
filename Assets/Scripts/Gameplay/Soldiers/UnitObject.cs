@@ -35,6 +35,8 @@ public class UnitObject : MonoBehaviour
 
     public float turnSpeed = 5;
 
+    public ArmourColourer colourer;
+
     private Coroutine fireCorout;
 
     private bool isOrgScreen;
@@ -68,7 +70,7 @@ public class UnitObject : MonoBehaviour
         FaceClosestEnemy();
     }
 
-    public void Load(SoldierModel soldier, EquipmentModel model, SquadObject parent, bool isOrgScreen = false)
+    public void Load(SoldierModel soldier, EquipmentModel model, SquadObject parent, string patternName, bool isOrgScreen = false)
     {
         this.isOrgScreen = isOrgScreen;
 
@@ -91,6 +93,8 @@ public class UnitObject : MonoBehaviour
         primaryParent = armourObject.GetComponent<ArmourModelScript>().primaryHome;
         secondaryParent = armourObject.GetComponent<ArmourModelScript>().secondaryHome;
         meleeParent = armourObject.GetComponent<ArmourModelScript>().meleeHome;
+        colourer = armourObject.GetComponent<ArmourColourer>();
+        colourer.SetArmourPattern(patternName);
 
         if (soldier.SoldierData.primaryWeapon != "")
         {
@@ -156,6 +160,7 @@ public class UnitObject : MonoBehaviour
         }
 
         armourObject = Instantiate(equipmentModel.weapons[armour].modelObject, armourParent);
+        colourer = armourObject.GetComponent<ArmourColourer>();
     }
 
     public void ToggleMesh(bool value)
