@@ -14,6 +14,7 @@ public class ChapterPageManager : MonoBehaviour
     [SerializeField] private SquadPage squadPage;
     [SerializeField] private SoldierPage soldierPage;
     [SerializeField] private SelectPage selectPage;
+    [SerializeField] private ColourPage colourPage;
 
     private CompanyBox currentCompany;
     private SquadBox currentSquad;
@@ -55,6 +56,7 @@ public class ChapterPageManager : MonoBehaviour
         orgPage.gameObject.SetActive(true);
         companyPage.gameObject.SetActive(false);
         selectPage.gameObject.SetActive(false);
+        main.Save();
     }
 
     public void LoadCompanyPage(CompanyModel model, CompanyBox box)
@@ -75,6 +77,7 @@ public class ChapterPageManager : MonoBehaviour
 
         companyPage.gameObject.SetActive(true);
         squadPage.gameObject.SetActive(false);
+        main.Save();
     }
 
     public void LoadSquadPage(SquadModel model, SquadBox box)
@@ -95,6 +98,7 @@ public class ChapterPageManager : MonoBehaviour
 
         squadPage.gameObject.SetActive(true);
         soldierPage.gameObject.SetActive(false);
+        main.Save();
     }
 
     public void LoadSoldierPage(SoldierModel model, SoldierBox box)
@@ -110,6 +114,7 @@ public class ChapterPageManager : MonoBehaviour
         selectPage.Initialise(info);
         currentCompany = null;
         selectPage.gameObject.SetActive(true);
+        main.Save();
     }
 
     public void GoToBattle(SelectionInfo info)
@@ -117,5 +122,28 @@ public class ChapterPageManager : MonoBehaviour
         main.OpenBattlefield(info);
         gameObject.SetActive(false);
         menuCamera.gameObject.SetActive(false);
+    }
+
+    public void LoadColourPage()
+    {
+        orgPage.gameObject.SetActive(false);
+        colourPage.gameObject.SetActive(true);
+        colourPage.Initialize(orgPage.chapterModel.ChapterDataPublic.patternName);
+    }
+
+    public void ColourBack(string patternName, List<MaterialDef> matColours)
+    {
+        orgPage.Load();
+        orgPage.gameObject.SetActive(true);
+        colourPage.gameObject.SetActive(false);
+
+        orgPage.chapterModel.ChapterDataPublic.colours = matColours;
+        orgPage.chapterModel.ChapterDataPublic.patternName = patternName;
+        main.Save();
+    }
+
+    public string GetArmourPattern()
+    {
+        return orgPage.chapterModel.ChapterDataPublic.patternName;
     }
 }

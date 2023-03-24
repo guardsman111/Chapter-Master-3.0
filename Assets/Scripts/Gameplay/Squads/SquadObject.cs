@@ -102,7 +102,7 @@ public class SquadObject : MonoBehaviour
             members.Add(soldierUnit);
             memberObjects.Add(soldierObject);
 
-            soldierUnit.Load(soldierModel, manager.equipmentModel, this);
+            soldierUnit.Load(soldierModel, manager.equipmentModel, this, manager.chapterModel.ChapterDataPublic.patternName);
 
             if(soldier.speed < Stats.maxSpeed)
             {

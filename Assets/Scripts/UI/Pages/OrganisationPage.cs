@@ -19,7 +19,7 @@ public class OrganisationPage : MonoBehaviour
     [SerializeField] private Dictionary<int, CompanyBox> companyBoxes;
 
     ChapterInfo info;
-    ChapterModel chapterModel;
+    public ChapterModel chapterModel;
 
     public void Initialise(ChapterModel model, ChapterInfo chapterInfo)
     {

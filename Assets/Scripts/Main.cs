@@ -54,8 +54,14 @@ public class Main : MonoBehaviour
         model.SetSelectedInfo(null);
     }
 
+    public void Save()
+    {
+        model.SaveData();
+    }
+
     public void QuitToMenu()
     {
+        Save();
         mainMenu.gameObject.SetActive(true);
         mainCamera.gameObject.SetActive(true);
         SceneManager.UnloadSceneAsync("Menus");
