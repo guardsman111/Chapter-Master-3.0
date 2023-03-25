@@ -41,5 +41,12 @@ namespace ChapterMaster.Data
             Terminator,
             Vehicle
         }
+
+        public enum ClimateType
+        {
+            Hot,
+            Goldilocks,
+            Cold
+        }
     }
 }

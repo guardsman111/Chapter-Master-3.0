@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ChapterMaster.Data.Enums;
 
 namespace ChapterMaster.Data
 {
@@ -62,6 +63,31 @@ namespace ChapterMaster.Data
             public Color colour;
             public float metallic;
             public float smoothness;
+        }
+
+        [Serializable]
+        public struct BiomeDef
+        {
+            public string biomeName;
+            public List<ClimateType> climateTypes;
+            public int maxPopulation;
+            public int maxWealth;
+            public bool habitable;
+            public List<string> availableFauna;
+            public List<string> availableFlora;
+            public string modelName;
+            public float minScale;
+            public float maxScale;
+        }
+
+        [Serializable]
+        public struct OrganismDef
+        {
+            public string organismName;
+            public string organismDescription;
+            public float populationEffect;
+            public float wealthEffect;
+            public bool isFauna;
         }
 
         /*

@@ -123,72 +123,368 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &159648355
-PrefabInstance:
+--- !u!1 &554484140
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1204452918}
-    m_Modifications:
-    - target: {fileID: 6505100070962819706, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_Name
-      value: Gataca
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 501
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7458961453452536772, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-      propertyPath: Sun
-      value: 
-      objectReference: {fileID: 1204452917}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd5390a7352342545923f01b77eb1630, type: 3}
---- !u!4 &701667409 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7249001682325563429, guid: cd5390a7352342545923f01b77eb1630, type: 3}
-  m_PrefabInstance: {fileID: 159648355}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554484141}
+  - component: {fileID: 554484142}
+  m_Layer: 0
+  m_Name: Planet 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &554484141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554484140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1204452918}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554484142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554484140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b60f4e216e9a04b9ab871320822a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system: {fileID: 0}
+  planet: {fileID: 0}
+  distance: 3000
+  temperature: 2
+  habitable: 0
+--- !u!1 &613094254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613094256}
+  - component: {fileID: 613094255}
+  m_Layer: 0
+  m_Name: Sector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &613094255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613094254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a78c9fa0358ca4db36eeb98769dd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiomeModel: {fileID: 0}
+  system: {fileID: 1677661218}
+  biomes:
+  - biomeName: Jungle
+    climateTypes: 0000000001000000
+    maxPopulation: 1000000
+    maxWealth: 50000
+    habitable: 1
+    availableFauna:
+    - Snakes
+    - Gauzica
+    - Sparrows
+    - Hawks
+    availableFlora:
+    - Oak Trees
+    - Man Traps
+    modelName: Jungle
+    minScale: 0.8
+    maxScale: 1.1
+  - biomeName: Molten
+    climateTypes: 00000000
+    maxPopulation: 100000
+    maxWealth: 300000
+    habitable: 1
+    availableFauna:
+    - Fireworms
+    availableFlora: []
+    modelName: Molten
+    minScale: 0.8
+    maxScale: 1.1
+  - biomeName: Verdant
+    climateTypes: 01000000
+    maxPopulation: 1000000
+    maxWealth: 150000
+    habitable: 1
+    availableFauna:
+    - Cows
+    - Sparrows
+    - Crustaceans
+    - Small Fish
+    availableFlora:
+    - Corn
+    - Oak Trees
+    - Anthoplantae
+    - Coral
+    modelName: Verdant
+    minScale: 0.6
+    maxScale: 1.3
+  - biomeName: Temperate
+    climateTypes: 01000000
+    maxPopulation: 50000000
+    maxWealth: 100000
+    habitable: 1
+    availableFauna:
+    - Snakes
+    - Cows
+    - Sparrows
+    - Hawks
+    - Small Fish
+    - Predatory Fish
+    availableFlora:
+    - Corn
+    - Tamed Grass
+    - Oak Trees
+    modelName: Temperate
+    minScale: 0.9
+    maxScale: 1.3
+  - biomeName: Ocean
+    climateTypes: 0100000002000000
+    maxPopulation: 50000
+    maxWealth: 50000
+    habitable: 1
+    availableFauna:
+    - Crustaceans
+    - Small Fish
+    - Predatory Fish
+    - Whales
+    - Sparrows
+    - Hawks
+    availableFlora:
+    - Coral
+    - Grass
+    modelName: Ocean
+    minScale: 0.7
+    maxScale: 1.3
+  - biomeName: Desert
+    climateTypes: 0000000001000000
+    maxPopulation: 2000000
+    maxWealth: 75000
+    habitable: 1
+    availableFauna:
+    - Fireworms
+    - Snakes
+    availableFlora:
+    - Cacti
+    modelName: Desert
+    minScale: 1
+    maxScale: 1.5
+  - biomeName: Arctic
+    climateTypes: 02000000
+    maxPopulation: 500000
+    maxWealth: 25000
+    habitable: 1
+    availableFauna:
+    - Bears
+    - Long Haired Snowbloff
+    availableFlora:
+    - Ferns
+    modelName: Arctic
+    minScale: 0.7
+    maxScale: 1.2
+  organisms:
+  - organismName: Snakes
+    organismDescription: Snakey snake
+    populationEffect: 0.95
+    wealthEffect: 1.05
+    isFauna: 1
+  - organismName: Cows
+    organismDescription: Moo cow
+    populationEffect: 1.3
+    wealthEffect: 1.1
+    isFauna: 1
+  - organismName: Oak Trees
+    organismDescription: Tronky Tree
+    populationEffect: 1
+    wealthEffect: 1
+    isFauna: 0
+  - organismName: Tamed Grass
+    organismDescription: Literally everywhere
+    populationEffect: 1
+    wealthEffect: 1
+    isFauna: 0
+  - organismName: Fireworms
+    organismDescription: Very burny
+    populationEffect: 0.7
+    wealthEffect: 0.85
+    isFauna: 1
+  - organismName: Hawks
+    organismDescription: Super good hunters
+    populationEffect: 1
+    wealthEffect: 1.4
+    isFauna: 1
+  - organismName: Sparrows
+    organismDescription: Small and cute little birdies
+    populationEffect: 1
+    wealthEffect: 1
+    isFauna: 1
+  - organismName: Corn
+    organismDescription: Probably imported long ago from old earth
+    populationEffect: 1.5
+    wealthEffect: 1.2
+    isFauna: 0
+  - organismName: Man Traps
+    organismDescription: Huge flowers that snap at humans with it's leaves
+    populationEffect: 0.5
+    wealthEffect: 1
+    isFauna: 0
+  - organismName: Gauzica
+    organismDescription: Large ape like creatures sporting 6 limbs. Extremely agile
+      while navigating treetops.
+    populationEffect: 0.8
+    wealthEffect: 1.2
+    isFauna: 1
+  - organismName: Anthoplantae
+    organismDescription: Plants with high Anthocyanin levels, appearing deep purple.
+      Highly beautiful and sought after
+    populationEffect: 1
+    wealthEffect: 2
+    isFauna: 0
+  - organismName: Crustaceans
+    organismDescription: Small to medium sized life forms with hard outer shells
+    populationEffect: 1.2
+    wealthEffect: 1.5
+    isFauna: 1
+  - organismName: Small Fish
+    organismDescription: Small sized aquatic life forms. Mostly survive on phytoplanktons
+    populationEffect: 1.2
+    wealthEffect: 1.1
+    isFauna: 1
+  - organismName: Predatory Fish
+    organismDescription: 'Larger aquatic life forms that consume smaller fish. '
+    populationEffect: 1.3
+    wealthEffect: 1.3
+    isFauna: 1
+  - organismName: Coral
+    organismDescription: Underwater forests of multicoloured flora bound to rocks.
+      Great tourist attractions
+    populationEffect: 1
+    wealthEffect: 2
+    isFauna: 0
+  - organismName: Whales
+    organismDescription: Huge mammals which reside in the depths of the ocean. Due
+      to their sheer size they are an excellent source of food.
+    populationEffect: 1.5
+    wealthEffect: 1.5
+    isFauna: 1
+  - organismName: Bears
+    organismDescription: Large furry creatures that are capable of doing great damage
+      and great comedy.
+    populationEffect: 0.9
+    wealthEffect: 1
+    isFauna: 1
+  - organismName: Long Haired Snowbloff
+    organismDescription: These long furred creatures bare a decent resemblence to
+      rabbits, but lacking the long ears.
+    populationEffect: 1.2
+    wealthEffect: 1
+    isFauna: 1
+  - organismName: Cacti
+    organismDescription: Made for low water environments, cacti plants are capable
+      of storing water for long periods
+    populationEffect: 1
+    wealthEffect: 1
+    isFauna: 0
+  - organismName: Ferns
+    organismDescription: These plants have large fronts carrying many tiny leaves,
+      and are capable of surviving the harshest winter conditions.
+    populationEffect: 1
+    wealthEffect: 1
+    isFauna: 0
+--- !u!4 &613094256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613094254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &811526334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 811526335}
+  - component: {fileID: 811526336}
+  m_Layer: 0
+  m_Name: Planet 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &811526335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811526334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1204452918}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &811526336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811526334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b60f4e216e9a04b9ab871320822a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system: {fileID: 0}
+  planet: {fileID: 0}
+  distance: 1700
+  temperature: 1
+  habitable: 1
 --- !u!1 &1204452917
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1204452918}
   m_Layer: 0
-  m_Name: Sun
+  m_Name: Planets Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,193 +508,68 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204452917}
-  m_LocalRotation: {x: 0, y: -0.9984795, z: 0, w: 0.055124197}
-  m_LocalPosition: {x: 0, y: -103.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2034352280}
-  - {fileID: 1949436202}
-  - {fileID: 1314978831}
-  - {fileID: 701667409}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 546.32, z: 0}
---- !u!1001 &1250019390
-PrefabInstance:
+  - {fileID: 2006470329}
+  - {fileID: 811526335}
+  - {fileID: 1589340618}
+  - {fileID: 1912310390}
+  - {fileID: 554484141}
+  m_Father: {fileID: 1677661216}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1589340617
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1204452918}
-    m_Modifications:
-    - target: {fileID: 1661499468394650407, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: Sun
-      value: 
-      objectReference: {fileID: 1204452917}
-    - target: {fileID: 4742099698497994149, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_Name
-      value: Amerald
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 321.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.87851906
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.47770742
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 57.072
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6724987
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.67249864
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.21850741
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.21850763
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 54
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966925300268982377, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: afa9591244e419f42812d9c37e54db96, type: 3}
---- !u!4 &1314978831 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-  m_PrefabInstance: {fileID: 1730701090}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1370110863
-PrefabInstance:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589340618}
+  - component: {fileID: 1589340619}
+  m_Layer: 0
+  m_Name: Planet 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589340618
+Transform:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1204452918}
-    m_Modifications:
-    - target: {fileID: 86817958262395775, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_Name
-      value: Dagon
-      objectReference: {fileID: 0}
-    - target: {fileID: 625370100339278145, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -473
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6664491027525592732, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: Sun
-      value: 
-      objectReference: {fileID: 1204452917}
-    - target: {fileID: 9178150241125238936, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589340617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1204452918}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589340619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589340617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b60f4e216e9a04b9ab871320822a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system: {fileID: 0}
+  planet: {fileID: 0}
+  distance: 2000
+  temperature: 1
+  habitable: 1
 --- !u!1001 &1677661215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -412,15 +583,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859759879874299766, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2859759879874299766, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2859759879874299766, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2859759879874299766, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,10 +635,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540577861092710303, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
       propertyPath: m_Name
-      value: Sun (1)
+      value: System
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
+--- !u!4 &1677661216 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2859759879874299766, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
+  m_PrefabInstance: {fileID: 1677661215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1677661217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7540577861092710303, guid: 44694d4ddf2c72445a6f3d8fdd80272f, type: 3}
+  m_PrefabInstance: {fileID: 1677661215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1677661218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677661217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584baeae80ff875429dbc390c64724e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 613094255}
+  planets:
+  - {fileID: 2006470330}
+  - {fileID: 811526336}
+  - {fileID: 1589340619}
+  - {fileID: 1912310391}
+  - {fileID: 554484142}
+  planetPrefab: {fileID: 4796161577290631170, guid: 0d2b55734d22675488542bd22f92a794, type: 3}
 --- !u!1 &1715996939
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +752,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &1715996943
 MonoBehaviour:
@@ -586,74 +787,101 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1001 &1730701090
-PrefabInstance:
+--- !u!1 &1912310389
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1204452918}
-    m_Modifications:
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -282
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375897032540122331, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3984801738704795440, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: m_Name
-      value: Teratoma
-      objectReference: {fileID: 0}
-    - target: {fileID: 7020129526150912950, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
-      propertyPath: Sun
-      value: 
-      objectReference: {fileID: 1204452917}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a5c10e1b912d6ec468ff0ca5c6cb8ca5, type: 3}
---- !u!4 &1949436202 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5486161730896140107, guid: 831e5db1274b90c4899a8b97feabc7b1, type: 3}
-  m_PrefabInstance: {fileID: 1370110863}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2034352280 stripped
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1912310390}
+  - component: {fileID: 1912310391}
+  m_Layer: 0
+  m_Name: Planet 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1912310390
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6647148699525755084, guid: afa9591244e419f42812d9c37e54db96, type: 3}
-  m_PrefabInstance: {fileID: 1250019390}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912310389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1204452918}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912310391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912310389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b60f4e216e9a04b9ab871320822a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system: {fileID: 0}
+  planet: {fileID: 0}
+  distance: 2400
+  temperature: 1
+  habitable: 1
+--- !u!1 &2006470328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006470329}
+  - component: {fileID: 2006470330}
+  m_Layer: 0
+  m_Name: Planet 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006470329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006470328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1204452918}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2006470330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006470328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b60f4e216e9a04b9ab871320822a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system: {fileID: 0}
+  planet: {fileID: 0}
+  distance: 1000
+  temperature: 0
+  habitable: 0

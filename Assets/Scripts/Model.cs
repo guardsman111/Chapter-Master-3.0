@@ -6,6 +6,7 @@ using static ChapterMaster.Data.Structs;
 
 public class Model
 {
+    public BiomeModel BiomeModel;
     public EquipmentModel EquipmentModel;
     public ChapterModel ChapterModel;
 
@@ -34,6 +35,16 @@ public class Model
         this.ChapterModel = new ChapterModel();
         jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Save.json");
         ChapterModel.Load(JsonUtility.FromJson<ChapterInfo>(jsonToRead));
+
+
+        if (!File.Exists(Application.streamingAssetsPath + "/BiomeData.json"))
+        {
+            Debug.LogError("Biome data not found aborting");
+            return;
+        }
+        this.BiomeModel = new BiomeModel();
+        jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/BiomeData.json");
+        BiomeModel.Load(JsonUtility.FromJson<BiomeData>(jsonToRead));
     }
     public void SetSelectedInfo(SelectionInfo info)
     {
