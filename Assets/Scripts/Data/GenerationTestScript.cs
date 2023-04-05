@@ -81,11 +81,6 @@ namespace ChapterMaster
                 File.WriteAllText(newPath, json);
             }
 
-            if (File.Exists(path))
-            {
-                string json = File.ReadAllText(path);
-                names = JsonUtility.FromJson<NameLocalisationStructure>(json);
-            }
 
             ChapterModel model = new ChapterModel();
             ChapterInfo info = new ChapterInfo();

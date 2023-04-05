@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306341280764205607}
   - component: {fileID: 5829930344631069926}
+  - component: {fileID: 6828401919350355657}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -49,6 +50,36 @@ MonoBehaviour:
   muzzle: {fileID: 0}
   muzzleFlash: []
   bullet: {fileID: 0}
+--- !u!205 &6828401919350355657
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084109020510109853}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2792896274133368871}
+    - renderer: {fileID: 8831064316446412051}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2792896274133368871}
+    - renderer: {fileID: 8831064316446412051}
+  - screenRelativeHeight: 0.049661182
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2792896274133368871}
+    - renderer: {fileID: 8831064316446412051}
+  m_Enabled: 1
 --- !u!1 &5533786101204991226
 GameObject:
   m_ObjectHideFlags: 0

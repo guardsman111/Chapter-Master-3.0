@@ -6,37 +6,74 @@ using static ChapterMaster.Data.Structs;
 
 public class SectorModel : MonoBehaviour
 {
-    public BiomeModel BiomeModel;
-    public SystemModel system;
+    public Model model;
+    public GameObject systemPrefab;
+    [SerializeField] private Camera cam;
 
     [SerializeField] List<BiomeDef> biomes;
     [SerializeField] List<OrganismDef> organisms;
 
+    private Dictionary<int, SystemModel> systems = new Dictionary<int, SystemModel>();
+
     private void Start()
     {
-        Initialize();
+        Main main = FindObjectOfType<Main>();
+        main.RetrieveGalaxyInfo(this);
     }
 
-    public void Initialize()
+    public void Initialize(int numberOfStars, Model newModel = null)
     {
-        BiomeData biomeData = new BiomeData();
-        biomeData.biomes = biomes;
-        biomeData.organisms = organisms;
-
-        string path = Application.streamingAssetsPath + "/BiomeData.json";
-
-        string json = JsonUtility.ToJson(biomeData);
-        File.WriteAllText(path, json);
-
-        if (!File.Exists(Application.streamingAssetsPath + "/BiomeData.json"))
+        if (newModel == null)
         {
-            Debug.LogError("Biome data not found aborting");
-            return;
         }
-        this.BiomeModel = new BiomeModel();
-        string jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/BiomeData.json");
-        BiomeModel.Load(JsonUtility.FromJson<BiomeData>(jsonToRead));
+        else
+        {
+            model = newModel;
+        }
 
-        system.Initialize(this);
+        for (int i = 0; i < numberOfStars; i++)
+        {
+            SystemModel system = Instantiate(systemPrefab, transform).GetComponent<SystemModel>();
+
+            int randomX = Random.Range(-50000, 50000);
+            int randomZ = Random.Range(-50000, 50000);
+
+            Vector3 position = new Vector3(randomX, 0, randomZ);
+
+            bool tooClose = true;
+            int count = 0;
+
+            while (tooClose)
+            {
+                count += 1;
+                tooClose = false;
+                foreach (SystemModel star in systems.Values)
+                {
+                    if(Vector3.Distance(star.transform.position, position) < 3000)
+                    {
+                        tooClose = true;
+                        randomX = Random.Range(-50000, 50000);
+                        randomZ = Random.Range(-50000, 50000);
+
+                        position = new Vector3(randomX, 0, randomZ);
+                        break;
+                    }
+                }
+                if(count > 10)
+                {
+                    Debug.LogWarning("Couldn't fit system");
+                    break;
+                }
+            }
+
+            int randomName = Random.Range(0, model.localisation.starNames.Count);
+            string systemName = model.localisation.starNames[randomName];
+
+            system.transform.position = position;
+            systems.Add(i, system);
+
+            system.Camera = cam;
+            system.Initialize(this, systemName);
+        }
     }
 }

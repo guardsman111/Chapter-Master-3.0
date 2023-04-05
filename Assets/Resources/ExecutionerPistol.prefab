@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1972641807578941489}
   - component: {fileID: 4360834691847372027}
   - component: {fileID: 7581456909298488553}
+  - component: {fileID: 256835483725278587}
   m_Layer: 0
   m_Name: ExecutionerPistol
   m_TagString: Untagged
@@ -104,6 +105,33 @@ MonoBehaviour:
   - {fileID: 192246441579912455}
   - {fileID: 5218152438932848921}
   bullet: {fileID: 469230842304551251}
+--- !u!205 &256835483725278587
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847454174032731438}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4360834691847372027}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4360834691847372027}
+  - screenRelativeHeight: 0.048224058
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4360834691847372027}
+  m_Enabled: 1
 --- !u!1001 &1411861253912460993
 PrefabInstance:
   m_ObjectHideFlags: 0

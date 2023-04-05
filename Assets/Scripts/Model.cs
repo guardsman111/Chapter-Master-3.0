@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,7 @@ public class Model
     public BiomeModel BiomeModel;
     public EquipmentModel EquipmentModel;
     public ChapterModel ChapterModel;
+    public NameLocalisationStructure localisation;
 
     private SelectionInfo selectedInfo;
 
@@ -45,7 +47,14 @@ public class Model
         this.BiomeModel = new BiomeModel();
         jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/BiomeData.json");
         BiomeModel.Load(JsonUtility.FromJson<BiomeData>(jsonToRead));
+
+        if (File.Exists(Application.streamingAssetsPath + "/Configs/Localisation.json"))
+        {
+            jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Configs/Localisation.json");
+            localisation = JsonUtility.FromJson<NameLocalisationStructure>(jsonToRead);
+        }
     }
+
     public void SetSelectedInfo(SelectionInfo info)
     {
         selectedInfo = info;

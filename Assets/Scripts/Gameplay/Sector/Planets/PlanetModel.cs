@@ -6,6 +6,7 @@ public class PlanetModel : MonoBehaviour
 {
     private PlanetData data;
     private PlanetSlot slot;
+    public Camera Camera;
 
     private GameObject planetObject;
 

@@ -37,6 +37,11 @@ public class DeployableUnitsPage : PageView
 
     public void RemoveUsedUnit(SquadInfo info)
     {
+        if(!unitIconList.ContainsKey(info))
+        {
+            return;
+        }
+
         Destroy(unitIconList[info].gameObject);
         unitIconList.Remove(info);
         deployedSquads.Add(info);

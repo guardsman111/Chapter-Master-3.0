@@ -58,7 +58,7 @@ public class UnitManager : MonoBehaviour
         equipmentModel = equipModel;
     }
 
-    public void SelectUnitsForBattle(SelectionInfo selection)
+    public void SelectUnitsForBattle(SelectionInfo selection, ChapterModel model)
     {
         //Change - This should eventually be removed
         /*if (testingHardStart)
@@ -112,6 +112,7 @@ public class UnitManager : MonoBehaviour
         }*/
 
         //Change - This needs to load a new data that contains the selected units and their companies
+        chapterModel = model;
         deploymentPage.SetupDeploymentPage(selection);
     }
 

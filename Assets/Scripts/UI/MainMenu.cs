@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         main = FindObjectOfType<Main>();
 
         organisationButton.onClick.AddListener(OpenOrganisationPage);
-        battleButton.onClick.AddListener(OpenBattlePage);
+        battleButton.onClick.AddListener(OpenGalaxyPage);
     }
 
     private void OpenOrganisationPage()
@@ -22,9 +22,9 @@ public class MainMenu : MonoBehaviour
         main.OpenChapterOrganisation();
     }
 
-    private void OpenBattlePage()
+    private void OpenGalaxyPage()
     {
         //Change - this should go to battle setup when it's done
-        main.OpenBattlefield();
+        main.SpawnGalaxy();
     }
 }

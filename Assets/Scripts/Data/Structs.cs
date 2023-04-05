@@ -13,6 +13,7 @@ namespace ChapterMaster.Data
         {
             public List<string> firstNames;
             public List<string> secondNames;
+            public List<string> starNames;
         }
 
         [Serializable]

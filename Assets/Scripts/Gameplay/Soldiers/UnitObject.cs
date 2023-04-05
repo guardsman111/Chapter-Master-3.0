@@ -66,7 +66,12 @@ public class UnitObject : MonoBehaviour
         {
             return;
         }
-        AngleUnitToFloor();
+
+        if(parentSquad.isMoving == true)
+        {
+            AngleUnitToFloor();
+        }
+
         FaceClosestEnemy();
     }
 

@@ -12,19 +12,28 @@ public class SystemModel : MonoBehaviour
 {
     [SerializeField] private SectorModel model;
     [SerializeField] private List<PlanetSlot> planets;
+    [SerializeField] private NameTag nameTag;
 
     [SerializeField] private GameObject planetPrefab;
+    public Camera Camera;
 
     private SystemData data;
 
-    public void Initialize(SectorModel sector, SystemData system = null)
+    public void Initialize(SectorModel sector, string systemName, SystemData system = null)
     {
         model = sector;
-        if(system != null)
+
+        if (system != null)
         {
             data = system;
             LoadPlanets(data.planets);
+            return;
         }
+
+        data = new SystemData();
+        data.systemName = systemName;
+        data.planets = new List<PlanetData>();
+        nameTag.Initialize(systemName, Camera);
 
         GeneratePlanets();
     }
@@ -78,13 +87,13 @@ public class SystemModel : MonoBehaviour
                 switch (slot.temperature)
                 {
                     case ClimateType.Hot:
-                        SetupPlanetBiome(slot, planet, model.BiomeModel.HotBiomes.Values.ToList());
+                        SetupPlanetBiome(slot, planet, model.model.BiomeModel.HotBiomes.Values.ToList());
                         break;
                     case ClimateType.Cold:
-                        SetupPlanetBiome(slot, planet, model.BiomeModel.ColdBiomes.Values.ToList());
+                        SetupPlanetBiome(slot, planet, model.model.BiomeModel.ColdBiomes.Values.ToList());
                         break;
                     case ClimateType.Goldilocks:
-                        SetupPlanetBiome(slot, planet, model.BiomeModel.GoldilocksBiomes.Values.ToList());
+                        SetupPlanetBiome(slot, planet, model.model.BiomeModel.GoldilocksBiomes.Values.ToList());
                         break;
                 }
 
@@ -113,6 +122,8 @@ public class SystemModel : MonoBehaviour
                 }
 
                 slot.planet.Initialize(planet, slot);
+                data.planets.Add(planet);
+                slot.planet.Camera = Camera;
             }
         }
     }
@@ -162,7 +173,7 @@ public class SystemModel : MonoBehaviour
 
         foreach (string fauna in biome.availableFauna)
         {
-            if (!model.BiomeModel.organisms.ContainsKey(fauna))
+            if (!model.model.BiomeModel.organisms.ContainsKey(fauna))
             {
                 continue;
             }
@@ -174,7 +185,7 @@ public class SystemModel : MonoBehaviour
                 continue;
             }
 
-            OrganismDef organism = model.BiomeModel.organisms[fauna];
+            OrganismDef organism = model.model.BiomeModel.organisms[fauna];
 
             planet.population += (int)(startPopulation * (organism.populationEffect - 1));
             planet.wealth += (int)(startWealth * (organism.wealthEffect - 1));
@@ -184,12 +195,12 @@ public class SystemModel : MonoBehaviour
 
         foreach (string flora in biome.availableFlora)
         {
-            if (!model.BiomeModel.organisms.ContainsKey(flora))
+            if (!model.model.BiomeModel.organisms.ContainsKey(flora))
             {
                 continue;
             }
 
-            OrganismDef organism = model.BiomeModel.organisms[flora];
+            OrganismDef organism = model.model.BiomeModel.organisms[flora];
 
             planet.population += (int)(startPopulation * (organism.populationEffect - 1));
             planet.wealth += (int)(startWealth * (organism.wealthEffect - 1));

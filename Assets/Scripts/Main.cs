@@ -9,8 +9,6 @@ public class Main : MonoBehaviour
     [SerializeField] private Model model = new Model();
     [SerializeField] private MainMenu mainMenu;
 
-
-
     private void Start()
     {
         model.Initialise();
@@ -28,9 +26,16 @@ public class Main : MonoBehaviour
         manager.Initialise(model.EquipmentModel, model.ChapterModel, model.ChapterModel.ChapterDataPublic);
     }
 
-    public void OpenBattleSetupScreen()
+    public void SpawnGalaxy()
     {
-        //SceneManager.LoadScene("Menus", LoadSceneMode.Additive); To be created
+        mainMenu.gameObject.SetActive(false);
+        SceneManager.LoadScene("PlanetsTestingScene", LoadSceneMode.Additive);
+        mainCamera.gameObject.SetActive(false);
+    }
+
+    public void RetrieveGalaxyInfo(SectorModel sector)
+    {
+        sector.Initialize(50, model);
     }
 
     public void OpenBattlefield(SelectionInfo info = null)
@@ -50,7 +55,7 @@ public class Main : MonoBehaviour
     public void RetrieveSelectedInfo(UnitManager manager)
     {
         manager.Initialize(model.EquipmentModel);
-        manager.SelectUnitsForBattle(model.GetSelectedInfo());
+        manager.SelectUnitsForBattle(model.GetSelectedInfo(), model.ChapterModel);
         model.SetSelectedInfo(null);
     }
 

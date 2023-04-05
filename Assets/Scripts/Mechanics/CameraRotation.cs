@@ -183,13 +183,19 @@ public class CameraRotation : MonoBehaviour
         {
             if (hit.collider.tag == "Collider") 
             {
-                posComponent.SetTargetUnit(hit.collider.GetComponent<UnitCollider>().Unit);
-                return;
+                if(hit.collider.TryGetComponent<UnitCollider>(out UnitCollider col))
+                {
+                    posComponent.SetTargetUnit(col.Unit);
+                    return;
+                }
             }
             if (hit.collider.tag == "Unit")
             {
-                posComponent.SetTargetUnit(hit.collider.GetComponent<UnitObject>().ParentSquad);
-                return;
+                if (hit.collider.TryGetComponent<UnitObject>(out UnitObject col))
+                {
+                    posComponent.SetTargetUnit(col.ParentSquad);
+                    return;
+                }
             }
         }
     }

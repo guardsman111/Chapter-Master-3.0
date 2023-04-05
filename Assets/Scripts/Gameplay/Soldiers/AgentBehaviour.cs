@@ -22,7 +22,10 @@ public class AgentBehaviour : MonoBehaviour
 
     public virtual void Update()
     {
-        agent.SetSteering(GetSteering(), weight);
+        if (target.isMoving == true || Vector3.Distance(target.transform.position, agent.transform.position) > 5)
+        {
+            agent.SetSteering(GetSteering(), weight);
+        }
     }
 
     public float MapToRange(float rotation)

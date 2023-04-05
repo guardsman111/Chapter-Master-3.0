@@ -7,6 +7,7 @@ TagManager:
   - Collider
   - Terrain
   - Unit
+  - Sector
   layers:
   - Default
   - TransparentFX
