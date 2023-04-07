@@ -10,20 +10,23 @@ public class NameTag : MonoBehaviour
 
     public Camera Camera;
 
+    [SerializeField] private float multiplier;
+
     private Vector3 targetPoint;
     private Quaternion targetRotation;
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void RotateTag()
     {
         if(Camera == null)
         {
             return;
         }
 
-        targetPoint = new Vector3(Camera.transform.position.x, transform.position.y, Camera.transform.position.z) - transform.position;
+        Vector3 currentPoint = new Vector3(transform.position.x, 0, transform.position.z);
+        targetPoint = new Vector3(Camera.transform.position.x, 0, Camera.transform.position.z) - currentPoint;
         targetRotation = Quaternion.LookRotation(-targetPoint, Vector3.up);
-        transform.localRotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.0f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * multiplier);
     }
 
     public virtual void Initialize(string name, Camera cam)

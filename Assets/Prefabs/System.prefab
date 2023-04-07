@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   label: {fileID: 4510941896435064425}
   Camera: {fileID: 0}
+  multiplier: 2
 --- !u!1 &3205704233305892891
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +108,6 @@ MonoBehaviour:
   - {fileID: 4961120265485494837}
   nameTag: {fileID: 1638356149144537758}
   planetPrefab: {fileID: 4796161577290631170, guid: 0d2b55734d22675488542bd22f92a794, type: 3}
-  Camera: {fileID: 0}
 --- !u!1 &4961120265485494839
 GameObject:
   m_ObjectHideFlags: 0

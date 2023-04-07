@@ -15,13 +15,18 @@ public class SystemModel : MonoBehaviour
     [SerializeField] private NameTag nameTag;
 
     [SerializeField] private GameObject planetPrefab;
-    public Camera Camera;
+    private Camera Camera;
 
     private SystemData data;
 
-    public void Initialize(SectorModel sector, string systemName, SystemData system = null)
+    public void Initialize(SectorModel sector, string systemName, Camera camera = null, SystemData system = null)
     {
         model = sector;
+
+        if(camera != null)
+        {
+            Camera = camera;
+        }
 
         if (system != null)
         {
@@ -36,6 +41,11 @@ public class SystemModel : MonoBehaviour
         nameTag.Initialize(systemName, Camera);
 
         GeneratePlanets();
+    }
+
+    private void Update()
+    {
+        nameTag.RotateTag();
     }
 
     private void GeneratePlanets()
@@ -80,7 +90,7 @@ public class SystemModel : MonoBehaviour
                 slot.planet = Instantiate(planetPrefab, slot.transform).GetComponent<PlanetModel>();
 
                 PlanetData planet = new PlanetData();
-                planet.planetName = "New Planet ";
+                planet.planetName = data.systemName + " " + i.ToString();
                 planet.slotID = planets.IndexOf(slot);
                 planet.climate = slot.temperature.ToString();
 
@@ -121,9 +131,8 @@ public class SystemModel : MonoBehaviour
                     planet.rings = true;
                 }
 
-                slot.planet.Initialize(planet, slot);
+                slot.planet.Initialize(planet, slot, Camera);
                 data.planets.Add(planet);
-                slot.planet.Camera = Camera;
             }
         }
     }
@@ -216,12 +225,23 @@ public class SystemModel : MonoBehaviour
             foreach (PlanetData planet in systemPlanets)
             {
                 planets[planet.slotID].planet = Instantiate(planetPrefab, planets[planet.slotID].transform).GetComponent<PlanetModel>();
-                planets[planet.slotID].planet.Initialize(planet, planets[planet.slotID]);
+                planets[planet.slotID].planet.Initialize(planet, planets[planet.slotID], Camera);
             }
         }
         else
         {
             Debug.LogError("More planets passed in than slots! ");
+        }
+    }
+
+    public void TogglePlanets(bool state)
+    {
+        foreach(PlanetSlot planet in planets)
+        {
+            if(planet.planet != null)
+            {
+                planet.planet.TogglePlanet(state);
+            }
         }
     }
 }

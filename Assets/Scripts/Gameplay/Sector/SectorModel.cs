@@ -14,6 +14,7 @@ public class SectorModel : MonoBehaviour
     [SerializeField] List<OrganismDef> organisms;
 
     private Dictionary<int, SystemModel> systems = new Dictionary<int, SystemModel>();
+    private bool planetsHidden = false;
 
     private void Start()
     {
@@ -72,8 +73,22 @@ public class SectorModel : MonoBehaviour
             system.transform.position = position;
             systems.Add(i, system);
 
-            system.Camera = cam;
-            system.Initialize(this, systemName);
+            system.Initialize(this, systemName, camera: cam);
+        }
+    }
+
+    public void TogglePlanets(bool state)
+    {
+        if(planetsHidden == state)
+        {
+            return; 
+        }
+
+        planetsHidden = state;
+
+        foreach(SystemModel system in systems.Values)
+        {
+            system.TogglePlanets(state);
         }
     }
 }

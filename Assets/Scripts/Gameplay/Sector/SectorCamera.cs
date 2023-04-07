@@ -6,6 +6,7 @@ using UnityEngine.Device;
 public class SectorCamera : MonoBehaviour
 {
     [SerializeField] private Camera camera;
+    [SerializeField] private SectorModel sector;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float zoomSpeed;
@@ -198,7 +199,6 @@ public class SectorCamera : MonoBehaviour
                 zoom = transform.forward;
                 zoomY = 1;
             }
-            CheckMouseTarget();
         }
 
         Vector3 position = transform.localPosition;
@@ -224,10 +224,13 @@ public class SectorCamera : MonoBehaviour
             camera.transform.localPosition = new Vector3(0, minZoom - 1, 0);
             transform.localPosition = position;
         }
-    }
 
-    private void CheckMouseTarget()
-    {
+        if(camera.transform.localPosition.y > minZoom / 2)
+        {
+            sector.TogglePlanets(false);
+            return;
+        }
 
+        sector.TogglePlanets(true);
     }
 }

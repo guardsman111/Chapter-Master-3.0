@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1715996941}
+  sector: {fileID: 613094255}
   moveSpeed: 25
   rotateSpeed: 150
   zoomSpeed: 100

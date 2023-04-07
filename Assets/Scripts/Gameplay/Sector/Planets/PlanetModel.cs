@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlanetModel : MonoBehaviour
 {
+    [SerializeField] private NameTag nameTag;
+
     private PlanetData data;
     private PlanetSlot slot;
-    public Camera Camera;
+    private Camera Camera;
 
     private GameObject planetObject;
 
-    public void Initialize(PlanetData planetData, PlanetSlot planetSlot)
+    public void Initialize(PlanetData planetData, PlanetSlot planetSlot, Camera cam)
     {
-        if(data != null)
+        if (data != null)
         {
             Debug.LogWarning($"Planet {data.planetName} already initialized");
             return;
@@ -20,15 +22,18 @@ public class PlanetModel : MonoBehaviour
 
         data = planetData;
         slot = planetSlot;
+        Camera = cam;
 
         GeneratePlanet();
+        nameTag.transform.parent = slot.system.transform;
+        nameTag.Initialize(data.planetName, Camera);
     }
 
     private void GeneratePlanet()
     {
         GameObject planet = (GameObject)Resources.Load("Planets/" + data.modelName);
 
-        if(planet == null)
+        if (planet == null)
         {
             Debug.LogError("Planet model couldn't be found");
             return;
@@ -52,6 +57,12 @@ public class PlanetModel : MonoBehaviour
     {
         planetObject.transform.localEulerAngles += new Vector3(0, 0.01f * data.spin, 0);
         transform.localEulerAngles += new Vector3(0, 0.01f * data.orbitSpeed, 0);
+    }
+
+    public void FixedUpdate()
+    {
+        nameTag.transform.position = planetObject.transform.position;
+        nameTag.RotateTag();
     }
 
     public IEnumerator ToggleExtras()
@@ -79,5 +90,10 @@ public class PlanetModel : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void TogglePlanet(bool state)
+    {
+        planetObject.SetActive(state);
     }
 }
