@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static ChapterMaster.Data.Structs;
 
 public class SectorModel : MonoBehaviour
@@ -14,7 +16,8 @@ public class SectorModel : MonoBehaviour
     [SerializeField] List<OrganismDef> organisms;
 
     private Dictionary<int, SystemModel> systems = new Dictionary<int, SystemModel>();
-    private bool planetsHidden = false;
+    private List<SystemData> systemDatas = new List<SystemData>();
+    private bool planetsHidden = true;
 
     private void Start()
     {
@@ -22,7 +25,7 @@ public class SectorModel : MonoBehaviour
         main.RetrieveGalaxyInfo(this);
     }
 
-    public void Initialize(int numberOfStars, Model newModel = null)
+    public void Initialize(int numberOfStars, Model newModel = null, SectorData data = null)
     {
         if (newModel == null)
         {
@@ -30,6 +33,22 @@ public class SectorModel : MonoBehaviour
         else
         {
             model = newModel;
+        }
+
+        if(data != null)
+        {
+            foreach(SystemData system in data.systems)
+            {
+                SystemModel sModel = Instantiate(systemPrefab, transform).GetComponent<SystemModel>();
+
+                sModel.transform.position = system.position;
+                systems.Add(system.ID, sModel);
+
+                sModel.Initialize(this, system.systemName, camera: cam, system: system);
+            }
+
+            systemDatas = data.systems;
+            return;
         }
 
         for (int i = 0; i < numberOfStars; i++)
@@ -70,11 +89,16 @@ public class SectorModel : MonoBehaviour
             int randomName = Random.Range(0, model.localisation.starNames.Count);
             string systemName = model.localisation.starNames[randomName];
 
+
             system.transform.position = position;
             systems.Add(i, system);
 
-            system.Initialize(this, systemName, camera: cam);
+            system.Initialize(this, systemName, camera: cam, ID: i);
+            systemDatas.Add(system.ReturnDataToSave());
         }
+
+        model.SavedData.sector.systems = systemDatas;
+        model.SaveData();
     }
 
     public void TogglePlanets(bool state)

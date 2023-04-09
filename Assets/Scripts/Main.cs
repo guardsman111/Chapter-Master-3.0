@@ -35,6 +35,12 @@ public class Main : MonoBehaviour
 
     public void RetrieveGalaxyInfo(SectorModel sector)
     {
+        if(model.SavedData.sector.systems.Count > 0)
+        {
+            sector.Initialize(0, model, model.SavedData.sector);
+            return;
+        }
+
         sector.Initialize(50, model);
     }
 

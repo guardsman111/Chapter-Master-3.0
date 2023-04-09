@@ -1,3 +1,4 @@
+using ChapterMaster;
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,8 +10,11 @@ public class Model
 {
     public BiomeModel BiomeModel;
     public EquipmentModel EquipmentModel;
+    public SaveData SavedData;
     public ChapterModel ChapterModel;
     public NameLocalisationStructure localisation;
+
+    private GenerationScript generator = new GenerationScript();
 
     private SelectionInfo selectedInfo;
 
@@ -28,17 +32,6 @@ public class Model
         string jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Configs/EquipmentData.json");
         EquipmentModel.Load(JsonUtility.FromJson<EquipmentData>(jsonToRead));
 
-
-        if (!File.Exists(Application.streamingAssetsPath + "/Save.json"))
-        {
-            Debug.LogError("Save data not found aborting");
-            return;
-        }
-        this.ChapterModel = new ChapterModel();
-        jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Save.json");
-        ChapterModel.Load(JsonUtility.FromJson<ChapterInfo>(jsonToRead));
-
-
         if (!File.Exists(Application.streamingAssetsPath + "/BiomeData.json"))
         {
             Debug.LogError("Biome data not found aborting");
@@ -53,6 +46,17 @@ public class Model
             jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Configs/Localisation.json");
             localisation = JsonUtility.FromJson<NameLocalisationStructure>(jsonToRead);
         }
+
+        if (!File.Exists(Application.streamingAssetsPath + "/Save.json"))
+        {
+            Debug.LogError("Save data not found generating");
+            generator.Initialize(localisation);
+        }
+        this.ChapterModel = new ChapterModel();
+        this.SavedData = new SaveData();
+        jsonToRead = File.ReadAllText(Application.streamingAssetsPath + "/Save.json");
+        this.SavedData = JsonUtility.FromJson<SaveData>(jsonToRead);
+        this.ChapterModel.Load(SavedData.chapter);
     }
 
     public void SetSelectedInfo(SelectionInfo info)
@@ -72,6 +76,9 @@ public class Model
 
     public void SaveData()
     {
-        ChapterModel.Save();
+        string path = Application.streamingAssetsPath + "/Save.json";
+
+        string json = JsonUtility.ToJson(SavedData);
+        File.WriteAllText(path, json);
     }
 }

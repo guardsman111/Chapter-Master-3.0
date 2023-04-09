@@ -19,7 +19,7 @@ public class SystemModel : MonoBehaviour
 
     private SystemData data;
 
-    public void Initialize(SectorModel sector, string systemName, Camera camera = null, SystemData system = null)
+    public void Initialize(SectorModel sector, string systemName, Camera camera = null, SystemData system = null, int ID = -1)
     {
         model = sector;
 
@@ -32,12 +32,20 @@ public class SystemModel : MonoBehaviour
         {
             data = system;
             LoadPlanets(data.planets);
+            nameTag.Initialize(systemName, Camera);
             return;
         }
 
         data = new SystemData();
+
+        if (ID != -1)
+        {
+            data.ID = ID;
+        }
+
         data.systemName = systemName;
         data.planets = new List<PlanetData>();
+        data.position = transform.position;
         nameTag.Initialize(systemName, Camera);
 
         GeneratePlanets();
@@ -110,7 +118,7 @@ public class SystemModel : MonoBehaviour
                 float rotationSpeed = 0;
                 while (rotationSpeed == 0)
                 {
-                    rotationSpeed = Random.Range(-5, 5);
+                    rotationSpeed = Random.Range(-0.5f, 0.5f);
                 }
                 planet.orbitSpeed = rotationSpeed;
 
@@ -153,9 +161,8 @@ public class SystemModel : MonoBehaviour
             planet.population = Random.Range(-10000, biomes[random].maxPopulation) / 100;
         }
 
-        if(planet.population <= 0)
+        if(planet.population > 0)
         {
-            planet.population = 0;
             planet.wealth = Random.Range(0, biomes[random].maxWealth);
         }
 
@@ -216,6 +223,12 @@ public class SystemModel : MonoBehaviour
 
             planet.flora.Add(organism.organismName + " - " + organism.organismDescription);
         }
+
+        if(planet.population <= 0)
+        {
+            planet.population = 0;
+            planet.wealth = 0;
+        }
     }
 
     private void LoadPlanets(List<PlanetData> systemPlanets)
@@ -225,6 +238,7 @@ public class SystemModel : MonoBehaviour
             foreach (PlanetData planet in systemPlanets)
             {
                 planets[planet.slotID].planet = Instantiate(planetPrefab, planets[planet.slotID].transform).GetComponent<PlanetModel>();
+                planets[planet.slotID].system = this;
                 planets[planet.slotID].planet.Initialize(planet, planets[planet.slotID], Camera);
             }
         }
@@ -243,5 +257,10 @@ public class SystemModel : MonoBehaviour
                 planet.planet.TogglePlanet(state);
             }
         }
+    }
+
+    public SystemData ReturnDataToSave()
+    {
+        return data;
     }
 }

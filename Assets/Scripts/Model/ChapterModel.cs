@@ -21,12 +21,4 @@ public class ChapterModel
             CompanyDataDictionary.Add(company.CompanyID, model);
         }
     }
-
-    public void Save()
-    {
-        string path = Application.streamingAssetsPath + "/save.json";
-
-        string json = JsonUtility.ToJson(ChapterData);
-        File.WriteAllText(path, json);
-    }
 }

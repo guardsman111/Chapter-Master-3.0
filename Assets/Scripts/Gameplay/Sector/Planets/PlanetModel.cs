@@ -95,5 +95,6 @@ public class PlanetModel : MonoBehaviour
     public void TogglePlanet(bool state)
     {
         planetObject.SetActive(state);
+        nameTag.gameObject.SetActive(state);
     }
 }
